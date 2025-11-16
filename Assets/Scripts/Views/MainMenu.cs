@@ -6,8 +6,8 @@ using Zenject;
 public class MainMenu : MonoBehaviour
 {
 	
-	public Action OnStartGame;
-	
-	public void StartGame() => OnStartGame?.Invoke(); 
-	
+	[Inject] private GlobalSession _globalSession;
+
+	public void StartGame() => _globalSession.CurState.StartGame();
+
 }

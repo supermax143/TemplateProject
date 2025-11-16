@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
+using Zenject;
 
 namespace Session.States {
 	public class GameState : GlobalSessionStateBase
 	{
-		protected override void OnStateEnter() {
-			Debug.Log("OnStateEnter GameState");
+		
+		[Inject] ScenesLoader _scenesLoader;
+		
+		protected override void OnStateEnter()
+		{
+			_scenesLoader.LoadGameScene();
 		}
 	}
 }

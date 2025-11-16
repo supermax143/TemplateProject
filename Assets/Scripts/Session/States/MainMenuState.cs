@@ -11,33 +11,15 @@ namespace Session.States
 
       [Inject] ScenesLoader _scenesLoader;
       
-      private MainMenu _mainMenu = null;
-      
       protected override void OnStateEnter()
       {
-         _mainMenu = FindObjectOfType<MainMenu>();   
-         _mainMenu.OnStartGame += CreateGame;
+         _scenesLoader.LoadMainMenuScene();
       }
 
-      private void CreateGame()
+      public override void StartGame() 
       {
-         Unsign();
-         _scenesLoader.LoadGameScene();
-         StartCoroutine(WaitSceneLoaded());
-      }
-
-      private IEnumerator WaitSceneLoaded() 
-      {
-         if (_scenesLoader.CurScene != SceneNames.GameScene)
-         {
-            yield return null;
-         }
          _globalSession.SetState<GameState>();
       }
 
-      private void Unsign()
-      {
-         _mainMenu.OnStartGame -= CreateGame;
-      }
    }
 }

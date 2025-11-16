@@ -22,6 +22,9 @@ namespace Session.States
          Destroy(this);
       }
 
+      public virtual void StartGame() { }
+
+
       protected abstract void OnStateEnter();
       
       protected virtual void OnStateExit() 

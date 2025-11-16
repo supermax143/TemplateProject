@@ -12,25 +12,27 @@ namespace Session
       [Inject] private DiContainer _container;
 
       private GlobalSessionStateBase _curState;
-      
+
+      public GlobalSessionStateBase CurState => _curState;
+
       private void Start()
       {
-         SetState<StartState>();
+         SetState<InitState>();
       }
 
       public T SetState<T>() where T : GlobalSessionStateBase
       {
-         if (_curState != null && _curState.GetType() == typeof(T))
+         if (CurState != null && CurState.GetType() == typeof(T))
          {
-            return _curState as T;
+            return CurState as T;
          }
 
-         if (_curState != null)
+         if (CurState != null)
          {
-            _curState.ExitState();
+            CurState.ExitState();
          }
          _curState = _container.InstantiateComponent<T>(gameObject);
-         return _curState as T;
+         return CurState as T;
       }
       
    }

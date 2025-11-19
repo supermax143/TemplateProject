@@ -1,5 +1,5 @@
 ﻿using DefaultNamespace;
-using Popups;
+using Windows;
 using Session;
 using UnityEngine;
 using Zenject;
@@ -13,12 +13,12 @@ namespace Installers
       private GlobalSession globalSession;
       
       [SerializeField, HideInInspector]
-      private PopupManager popupManager;
+      private WindowManager windowManager;
      
       private void OnValidate()
       {
          globalSession = GetComponent<GlobalSession>();
-         popupManager = GetComponent<PopupManager>();
+         windowManager = GetComponent<WindowManager>();
       }
 
 
@@ -26,7 +26,7 @@ namespace Installers
       {
          Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
-         Container.BindInstance(popupManager).AsSingle();
+         Container.BindInstance(windowManager).AsSingle();
       }
    }
 }

@@ -1,22 +1,22 @@
 using UnityEngine;
 
-namespace Popups
+namespace Windows
 {
     /// <summary>
-    /// Базовый класс для popup'ов, реализующий интерфейс IPopup.
-    /// Наследуйте от этого класса для создания собственных popup'ов.
+    /// Базовый класс для window'ов, реализующий интерфейс IWindow.
+    /// Наследуйте от этого класса для создания собственных window'ов.
     /// </summary>
-    public abstract class PopupBase : MonoBehaviour, IPopup
+    public abstract class WindowBase : MonoBehaviour, IWindow
     {
-        [SerializeField] private GameObject popupRoot;
+        [SerializeField] private GameObject windowRoot;
         
         private bool _isActive;
 
         protected virtual void Awake()
         {
-            if (popupRoot == null)
+            if (windowRoot == null)
             {
-                popupRoot = gameObject;
+                windowRoot = gameObject;
             }
             
             Hide();
@@ -24,9 +24,9 @@ namespace Popups
 
         public virtual void Show()
         {
-            if (popupRoot != null)
+            if (windowRoot != null)
             {
-                popupRoot.SetActive(true);
+                windowRoot.SetActive(true);
             }
             else
             {
@@ -39,9 +39,9 @@ namespace Popups
 
         public virtual void Hide()
         {
-            if (popupRoot != null)
+            if (windowRoot != null)
             {
-                popupRoot.SetActive(false);
+                windowRoot.SetActive(false);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Popups
             OnHide();
         }
 
-        public bool IsActive => _isActive && (popupRoot != null ? popupRoot.activeSelf : gameObject.activeSelf);
+        public bool IsActive => _isActive && (windowRoot != null ? windowRoot.activeSelf : gameObject.activeSelf);
 
         public GameObject GameObject => gameObject;
 

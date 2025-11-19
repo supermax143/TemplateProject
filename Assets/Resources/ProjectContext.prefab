@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalSession: {fileID: -6207519286421753537}
-  popupManager: {fileID: 4875320979819222349}
+  windowManager: {fileID: 4875320979819222349}
 --- !u!114 &-6207519286421753537
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using Windows;
 using Session;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Installers
@@ -11,14 +12,13 @@ namespace Installers
 
       [SerializeField, HideInInspector]
       private GlobalSession globalSession;
-      
       [SerializeField, HideInInspector]
-      private WindowManager windowManager;
+      private WindowsController _windowsController;
      
       private void OnValidate()
       {
          globalSession = GetComponent<GlobalSession>();
-         windowManager = GetComponent<WindowManager>();
+         _windowsController = GetComponent<WindowsController>();
       }
 
 
@@ -26,7 +26,7 @@ namespace Installers
       {
          Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
-         Container.BindInstance(windowManager).AsSingle();
+         Container.BindInstance(_windowsController).AsSingle();
       }
    }
 }

@@ -1,3 +1,4 @@
+using GUI.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -7,9 +8,10 @@ namespace Windows
     /// Пример реализации window'а.
     /// Показывает, как создать собственный window и использовать WindowManager.
     /// </summary>
+    [Window(nameof(ExampleWindow))]
     public class ExampleWindow : WindowBase
     {
-        [Inject] private WindowManager _windowManager;
+        [Inject] private WindowsController _windowsController;
 
         protected override void OnShow()
         {
@@ -23,25 +25,6 @@ namespace Windows
             Debug.Log("[ExampleWindow] Window скрыт");
         }
 
-        public void ShowViaManager()
-        {
-            if (_windowManager != null)
-            {
-                _windowManager.ShowWindow(this);
-            }
-            else
-            {
-                Debug.LogWarning("[ExampleWindow] WindowManager не найден");
-            }
-        }
-
-        public void CloseViaManager()
-        {
-            if (_windowManager != null)
-            {
-                _windowManager.CloseWindow(this);
-            }
-        }
     }
 }
 

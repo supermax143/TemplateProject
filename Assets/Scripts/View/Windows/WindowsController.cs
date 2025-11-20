@@ -9,7 +9,7 @@ namespace Windows
     /// Обеспечивает, что единовременно может быть открыт только один window.
     /// Window'ы могут находиться на разных сценах.
     /// </summary>
-    public class WindowManager : MonoBehaviour
+    public class WindowsController : MonoBehaviour
     {
         private IWindow _currentWindow;
         

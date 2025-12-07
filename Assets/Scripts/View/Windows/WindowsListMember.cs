@@ -1,12 +1,15 @@
 using Windows;
 using UnityEngine;
 
-namespace GUI.Windows {
-	internal interface IWindowsMemberHolder {
+namespace GUI.Windows
+{
+	internal interface IWindowsMemberHolder
+	{
 		void OnWindowRemoved(WindowsListMember member);
 	}
 
-	internal sealed class WindowsListMember : MonoBehaviour {
+	internal sealed class WindowsListMember : MonoBehaviour
+	{
 		private IWindowsMemberHolder _windowsController;
 
 		public bool UseDefaultBackground { get; set; }
@@ -14,11 +17,13 @@ namespace GUI.Windows {
 		public IWindow Window { get; private set; }
 
 
-		private void OnDestroy() {
+		private void OnDestroy()
+		{
 			if (_windowsController != null) _windowsController.OnWindowRemoved(this);
 		}
 
-		internal void Initialize(IWindowsMemberHolder windowsController, string windowName) {
+		internal void Initialize(IWindowsMemberHolder windowsController, string windowName)
+		{
 			_windowsController = windowsController;
 			WindowName = windowName;
 

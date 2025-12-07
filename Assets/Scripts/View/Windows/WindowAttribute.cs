@@ -1,31 +1,28 @@
 using System;
 using System.Linq;
 
-namespace GUI.Windows
-{
-    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
-    public class WindowAttribute : Attribute
-    {
-        public static bool TryGetName<T>(out string name) 
-            => TryGetName(typeof(T), out name);
+namespace GUI.Windows {
+	[AttributeUsage(AttributeTargets.Class)]
+	public class WindowAttribute : Attribute {
+		public WindowAttribute(string name) {
+			Name = name;
+		}
 
-        public static bool TryGetName(Type t, out string name)
-        {
-            name = default;
+		public string Name { get; }
 
-            if (!(t.GetCustomAttributes(typeof(WindowAttribute), inherit: true)
-                    .FirstOrDefault() is WindowAttribute attribute))
-                return false;
+		public static bool TryGetName<T>(out string name) {
+			return TryGetName(typeof(T), out name);
+		}
 
-            name = attribute.Name;
-            return true;
-        }
+		public static bool TryGetName(Type t, out string name) {
+			name = default;
 
-        public string Name { get; }
+			if (!(t.GetCustomAttributes(typeof(WindowAttribute), true)
+				    .FirstOrDefault() is WindowAttribute attribute))
+				return false;
 
-        public WindowAttribute(string name)
-        {
-            Name = name;
-        }
-    }
+			name = attribute.Name;
+			return true;
+		}
+	}
 }

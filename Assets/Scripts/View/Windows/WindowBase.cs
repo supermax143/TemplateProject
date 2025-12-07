@@ -1,73 +1,51 @@
 using UnityEngine;
 
-namespace Windows
-{
+namespace Windows {
     /// <summary>
-    /// Базовый класс для window'ов, реализующий интерфейс IWindow.
-    /// Наследуйте от этого класса для создания собственных window'ов.
+    ///     Базовый класс для window'ов, реализующий интерфейс IWindow.
+    ///     Наследуйте от этого класса для создания собственных window'ов.
     /// </summary>
-    public abstract class WindowBase : MonoBehaviour, IWindow
-    {
-        [SerializeField] private GameObject windowRoot;
-        
-        private bool _isActive;
+    public abstract class WindowBase : MonoBehaviour, IWindow {
+		[SerializeField] private GameObject windowRoot;
 
-        protected virtual void Awake()
-        {
-            if (windowRoot == null)
-            {
-                windowRoot = gameObject;
-            }
-            
-            Hide();
-        }
+		private bool _isActive;
 
-        public virtual void Show()
-        {
-            if (windowRoot != null)
-            {
-                windowRoot.SetActive(true);
-            }
-            else
-            {
-                gameObject.SetActive(true);
-            }
-            
-            _isActive = true;
-            OnShow();
-        }
+		protected virtual void Awake() {
+			if (windowRoot == null) windowRoot = gameObject;
 
-        public virtual void Hide()
-        {
-            if (windowRoot != null)
-            {
-                windowRoot.SetActive(false);
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
-            
-            _isActive = false;
-            OnHide();
-        }
+			Hide();
+		}
 
-        public bool IsActive => _isActive && (windowRoot != null ? windowRoot.activeSelf : gameObject.activeSelf);
+		public virtual void Show() {
+			if (windowRoot != null)
+				windowRoot.SetActive(true);
+			else
+				gameObject.SetActive(true);
 
-        public GameObject GameObject => gameObject;
+			_isActive = true;
+			OnShow();
+		}
 
-        protected virtual void OnShow()
-        {
-        }
+		public virtual void Hide() {
+			if (windowRoot != null)
+				windowRoot.SetActive(false);
+			else
+				gameObject.SetActive(false);
 
-        protected virtual void OnHide()
-        {
-        }
+			_isActive = false;
+			OnHide();
+		}
 
-        public void Close()
-        {
-            Hide();
-        }
-    }
+		public bool IsActive => _isActive && (windowRoot != null ? windowRoot.activeSelf : gameObject.activeSelf);
+
+		public GameObject GameObject => gameObject;
+
+		protected virtual void OnShow() { }
+
+		protected virtual void OnHide() { }
+
+		public void Close() {
+			Hide();
+		}
+	}
 }
-

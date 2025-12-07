@@ -8,6 +8,9 @@ namespace ResourceManager.Runtime
     {
         private static HandleStorage HandleStorage => HandleStorageSingleton.Instance;
 
+        public static Task<T> LoadAndRegisterHandle<T>(this AsyncOperationHandle<T> handle, HandleDependencies handleDependencies)
+            => HandleStorage.RegisterHandle(ref handle, handleDependencies);
+        
         public static Task<T> LoadAndRegisterHandle<T>(this AsyncOperationHandle<T> handle, string tag)
             => HandleStorage.RegisterHandle(ref handle, tag);
 

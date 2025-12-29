@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Windows
@@ -10,8 +11,9 @@ namespace Windows
 	{
 		[SerializeField] private GameObject windowRoot;
 
-		private bool _isActive;
-
+		public event Action<IWindow> OnShow;
+		public event Action<IWindow> OnHide;
+		
 		protected virtual void Awake()
 		{
 			if (windowRoot == null) windowRoot = gameObject;
@@ -26,8 +28,7 @@ namespace Windows
 			else
 				gameObject.SetActive(true);
 
-			_isActive = true;
-			OnShow();
+			OnShow?.Invoke(this);
 		}
 
 		public virtual void Hide()
@@ -37,25 +38,15 @@ namespace Windows
 			else
 				gameObject.SetActive(false);
 
-			_isActive = false;
-			OnHide();
-		}
-
-		public bool IsActive => _isActive && (windowRoot != null ? windowRoot.activeSelf : gameObject.activeSelf);
-
-		public GameObject GameObject => gameObject;
-
-		protected virtual void OnShow()
-		{
-		}
-
-		protected virtual void OnHide()
-		{
+			OnHide?.Invoke(this);
 		}
 
 		public void Close()
 		{
-			Hide();
+			Destroy(gameObject);
 		}
+		
+		public GameObject GameObject => gameObject;
+
 	}
 }

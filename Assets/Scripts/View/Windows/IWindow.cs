@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Windows
@@ -7,11 +8,11 @@ namespace Windows
 	/// </summary>
 	public interface IWindow
 	{
-		bool IsActive { get; }
-
 		GameObject GameObject { get; }
 		void Show();
 
 		void Hide();
+		event Action<IWindow> OnShow;
+		event Action<IWindow> OnHide;
 	}
 }

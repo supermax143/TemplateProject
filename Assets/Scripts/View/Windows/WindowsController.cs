@@ -24,6 +24,15 @@ namespace Windows
 
         private readonly List<WindowsListMember> _windowsList = new();
 
+        
+
+        public event Action<string> OnWindowStartLoading;
+        public event Action OnActiveWindowChanged;
+        public event Action OnWindowShown;
+        public event Action<string> OnAnyWindowClosed;
+        public event Action OnLastWindowClosed;
+
+
         void IWindowsMemberHolder.OnWindowRemoved(WindowsListMember member)
         {
             if (!_windowsList.Any())
@@ -43,16 +52,14 @@ namespace Windows
             if (isWindowsListEmpty && !_loadingWindows.Any()) OnLastWindowClosed?.Invoke();
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
+        
+        public void ShowWindowAsync<TWindow>(Action<IWindow> initCallback) where TWindow : IWindow
+        {
+            ShowWindowAsync(typeof(TWindow), initCallback);
+        }
+        
 
-        public event Action<string> OnWindowStartLoading;
-        public event Action OnActiveWindowChanged;
-        public event Action OnWindowShown;
-        public event Action<string> OnAnyWindowClosed;
-        public event Action OnLastWindowClosed;
-
-
-
-        private void ShowWindowAsync(Type windowType, Action<GameObject> initCallback)
+        public void ShowWindowAsync(Type windowType, Action<IWindow> initCallback)
         {
             if (!WindowAttribute.TryGetName(windowType, out var windowName))
             {
@@ -63,22 +70,20 @@ namespace Windows
             LoadWindow(windowName, initCallback);
         }
 
-        private async void LoadWindow(string windowName, Action<GameObject> callback)
+        private async void LoadWindow(string windowName, Action<IWindow> callback)
         {
             _loadingWindows.Add(windowName);
             OnWindowStartLoading?.Invoke(windowName);
 
             var windowPrefab = await AddressableExtention.Load<GameObject>(windowName, GetWindowUnloadTag(windowName));
-            if (this == null) return;
 
             callback?.Invoke(InitializeInstance(windowPrefab, windowName));
         }
 
-        private GameObject InitializeInstance(GameObject windowPrefab, string windowName)
+        private IWindow InitializeInstance(GameObject windowPrefab, string windowName)
         {
-            var window = _diContainer.InstantiatePrefab(windowPrefab);
-
-            var windowsListMember = window.gameObject.AddComponent<WindowsListMember>();
+            var window = _diContainer.InstantiatePrefabForComponent<IWindow>(windowPrefab, _windowsParent);
+            var windowsListMember = window.GameObject.AddComponent<WindowsListMember>();
             windowsListMember.Initialize(this, windowName);
 
             _loadingWindows.Remove(windowsListMember.WindowName);

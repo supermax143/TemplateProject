@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace ResourceManager.Runtime
 {
-    internal class HandleStorage : IDisposable
+    public class HandleStorage : IDisposable
     {
         private readonly Dictionary<AsyncOperationHandle, HashSet<string>> _taggedHandles = new(100);
         private readonly Dictionary<AsyncOperationHandle, HashSet<GameObject>> _linkedHandles = new(100);

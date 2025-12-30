@@ -44,7 +44,7 @@ namespace Windows
             var isLastMember = _windowsList.Last() == member;
 
             _windowsList.Remove(member);
-            AddressableExtention.ReleaseTag(member.WindowName);
+            AddressableExtention.ReleaseTag(GetWindowUnloadTag(member.WindowName));
 
             var isWindowsListEmpty = !_windowsList.Any();
             if (isLastMember) OnActiveWindowChanged?.Invoke();

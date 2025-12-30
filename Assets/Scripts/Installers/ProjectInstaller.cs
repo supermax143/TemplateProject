@@ -1,5 +1,6 @@
 ﻿using DefaultNamespace;
 using Windows;
+using ResourceManager.Runtime;
 using Session;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -24,9 +25,20 @@ namespace Installers
 
       public override void InstallBindings()
       {
+         InitializeAddressables();
+
          Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInstance(_windowsController).AsSingle();
       }
+
+      private static void InitializeAddressables()
+      {
+         var handleStorage = new HandleStorage();
+         AsyncOpHandleExtension.Initialize(handleStorage);
+         AddressableExtention.Initialize(handleStorage);
+      }
+
+
    }
 }

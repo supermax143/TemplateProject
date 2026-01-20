@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Localization">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">key</Data></Cell>
+        <Cell><Data ss:Type="String">ru</Data></Cell>
+        <Cell><Data ss:Type="String">en</Data></Cell>
+      </Row>
+
+      <Row>
+        <Cell><Data ss:Type="String">main_menu_title</Data></Cell>
+        <Cell><Data ss:Type="String">Главное меню</Data></Cell>
+        <Cell><Data ss:Type="String">Main Menu</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">main_menu_start</Data></Cell>
+        <Cell><Data ss:Type="String">Начать игру</Data></Cell>
+        <Cell><Data ss:Type="String">Start Game</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">main_menu_settings</Data></Cell>
+        <Cell><Data ss:Type="String">Настройки</Data></Cell>
+        <Cell><Data ss:Type="String">Settings</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">main_menu_exit</Data></Cell>
+        <Cell><Data ss:Type="String">Выход</Data></Cell>
+        <Cell><Data ss:Type="String">Exit</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">game_hud_score</Data></Cell>
+        <Cell><Data ss:Type="String">Счёт: {0}</Data></Cell>
+        <Cell><Data ss:Type="String">Score: {0}</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">game_hud_pause</Data></Cell>
+        <Cell><Data ss:Type="String">Пауза</Data></Cell>
+        <Cell><Data ss:Type="String">Paused</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">window_example_title</Data></Cell>
+        <Cell><Data ss:Type="String">Пример окна</Data></Cell>
+        <Cell><Data ss:Type="String">Example Window</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">window_example_body</Data></Cell>
+        <Cell><Data ss:Type="String">Это тестовая локализация из Excel/CSV.</Data></Cell>
+        <Cell><Data ss:Type="String">This is a test localization from Excel/CSV.</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">error_network</Data></Cell>
+        <Cell><Data ss:Type="String">Ошибка сети</Data></Cell>
+        <Cell><Data ss:Type="String">Network error</Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>

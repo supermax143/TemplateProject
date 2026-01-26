@@ -11,6 +11,10 @@ namespace Localization
 {
     public class LocalizationController : IInitializable
     {
+
+        // Event invoked when current language changes. Parameter is the new language code.
+        public event Action<string> LanguageChanged;
+
         private const string LOCALIZATION_KEY = "Localization";
         private const string DefaultLanguageCode = "ru";
 
@@ -19,7 +23,7 @@ namespace Localization
         /// <summary>
         /// Текущий код языка (например, "ru", "en").
         /// </summary>
-        public string CurrentLanguageCode { get; private set; } = DefaultLanguageCode;
+        public string CurrentLanguageCode { get; private set; }
 
         /// <summary>
         /// Список доступных языков (из заголовка CSV).
@@ -149,6 +153,10 @@ namespace Localization
                 return;
             }
 
+            // If language didn't change - nothing to do
+            if (string.Equals(CurrentLanguageCode, languageCode, StringComparison.OrdinalIgnoreCase))
+                return;
+
             _currentLanguageTable.Clear();
             foreach (var kvp in table)
             {
@@ -156,6 +164,9 @@ namespace Localization
             }
 
             CurrentLanguageCode = languageCode;
+
+            // Notify listeners about language change
+            LanguageChanged?.Invoke(languageCode);
         }
 
         /// <summary>

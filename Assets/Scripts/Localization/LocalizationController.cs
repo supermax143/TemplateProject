@@ -1,17 +1,17 @@
+using ResourceManager.Runtime;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Zenject;
 
 namespace Localization
 {
-    /// <summary>
-    /// Простой контроллер локализации без использования Unity-пакета.
-    /// Ожидает CSV-файл, экспортированный из Excel.
-    /// </summary>
-    public class LocalizationController
+    public class LocalizationController : IInitializable
     {
+        private const string LOCALIZATION_KEY = "Localization";
         private const string DefaultLanguageCode = "ru";
 
         private char _separator = ';';
@@ -33,7 +33,18 @@ namespace Localization
         private List<string> _languageCodes = new();
 
 
-        public void Initialize(string csvText, string languageCode = null, char? separator = null)
+        public async void Initialize()
+        {
+            var localizationText = await AddressableExtention.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
+            Initialize(localizationText?.text);
+        }
+
+        private string GetTag()
+        {
+            return GetHashCode().ToString();
+        }
+
+        private void Initialize(string csvText, string languageCode = null, char? separator = null)
         {
             if (string.IsNullOrWhiteSpace(csvText))
             {
@@ -221,6 +232,7 @@ namespace Localization
             result.Add(sb.ToString());
             return result.ToArray();
         }
+
     }
 }
 

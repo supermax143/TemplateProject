@@ -35,13 +35,11 @@ namespace Installers
       {
          InitializeAddressables();
 
-         var localizationController = InitializeLocalization();
-         
          Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInstance(_windowsController).AsSingle();
-         Container.BindInstance(localizationController).AsSingle();
-      }
+         Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
+        }
 
       private static void InitializeAddressables()
       {
@@ -50,34 +48,6 @@ namespace Installers
          AddressableExtention.Initialize(handleStorage);
       }
       
-      private LocalizationController InitializeLocalization()
-      {
-         var controller = new LocalizationController();
-         
-         // Загружаем CSV через Addressables асинхронно, инициализируем контроллер при завершении.
-         // Важно: пока файл не загружен, Get(key) будет возвращать ключи.
-         if (!string.IsNullOrEmpty(_localizationAddressKey))
-         {
-            Addressables.LoadAssetAsync<TextAsset>(_localizationAddressKey)
-               .Completed += handle =>
-               {
-                  if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result != null)
-                  {
-                     controller.Initialize(handle.Result.text);
-                  }
-                  else
-                  {
-                     Debug.LogError($"[ProjectInstaller] Не удалось загрузить файл локализации по адресу '{_localizationAddressKey}'.");
-                  }
-               };
-         }
-         else
-         {
-            Debug.LogWarning("[ProjectInstaller] Пустой ключ адреса для локализации. Файл не будет загружен.");
-         }
-
-         return controller;
-      }
 
 
    }

@@ -1,9 +1,11 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace DefaultNamespace
 {
-   public class ScenesLoader  
+   internal class ScenesLoader  
    {
       [Inject] private ZenjectSceneLoader _sceneLoader;
       
@@ -11,16 +13,16 @@ namespace DefaultNamespace
       public string CurScene => SceneManager.GetActiveScene().name;
 
 
-      public void LoadMainMenuScene() => LoadScene(SceneNames.MainMenuScene);
-      public void LoadGameScene() => LoadScene(SceneNames.GameScene);
+      public async Task  LoadMainMenuScene() => await LoadScene(SceneNames.MainMenuScene);
+      public async Task  LoadGameScene() => await LoadScene(SceneNames.GameScene);
       
-      private void LoadScene(string scene)
+      private async Task LoadScene(string scene)
       {
          if (CurScene == scene)
          {
             return;
          }
-         _sceneLoader.LoadScene(scene);
+         await _sceneLoader.LoadSceneAsync(scene);
       }
       
 

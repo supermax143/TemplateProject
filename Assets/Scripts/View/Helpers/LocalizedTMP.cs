@@ -15,7 +15,7 @@ namespace Assets.Scripts.View.Helpers
         private string _key;
 
         [Inject]
-        private LocalizationController _localization;
+        private ILocalization _localization;
 
         private void OnValidate()
         {

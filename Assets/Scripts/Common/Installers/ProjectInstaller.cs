@@ -13,7 +13,7 @@ using Assets.Scripts.Common.Session;
 
 namespace Assets.Scripts.Common.Installers
 {
-   public class ProjectInstaller : MonoInstaller
+   internal class ProjectInstaller : MonoInstaller
    {
 
       [SerializeField, HideInInspector]
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Common.Installers
 
          Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
-         Container.BindInstance(_windowsController).AsSingle();
+         Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
       }
 

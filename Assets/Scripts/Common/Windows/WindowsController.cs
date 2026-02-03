@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common.Windows;
 using GUI.Windows;
 using ResourceManager.Runtime;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Windows
 	///     Обеспечивает, что единовременно может быть открыт только один window.
 	///     Window'ы могут находиться на разных сценах.
 	/// </summary>
-	public class WindowsController : MonoBehaviour, IWindowsMemberHolder
+	internal class WindowsController : MonoBehaviour, IWindowsMemberHolder, IWindowsController
     {
 
         [SerializeField] private Transform _windowsParent;

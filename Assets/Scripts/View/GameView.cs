@@ -1,4 +1,5 @@
 ﻿using Windows;
+using Common.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -6,7 +7,7 @@ namespace View
 {
     public class GameView : MonoBehaviour
     {
-        [Inject] private WindowsController _windowsController;
+        [Inject] private IWindowsController _windowsController;
         
         public void ShowExampleWindow()
         {

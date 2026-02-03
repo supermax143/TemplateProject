@@ -8,10 +8,9 @@ using Zenject;
 
 namespace Assets.Scripts.Common.Localization
 {
-    public class LocalizationController : IInitializable
+    internal class LocalizationController : IInitializable, ILocalization
     {
 
-        // Event invoked when current language changes. Parameter is the new language code.
         public event Action<string> LanguageChanged;
 
         private const string LOCALIZATION_KEY = "Localization";

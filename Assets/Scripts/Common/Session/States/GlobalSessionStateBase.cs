@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using Assets.Scripts.Common.Session;
-using DefaultNamespace;
-using UnityEngine;
-using UnityEngine.Android;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Common.Session.States

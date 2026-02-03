@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using Assets.Scripts.Common.Localization;
+using Common.Game;
 using DefaultNamespace;
 using Zenject;
 
@@ -7,10 +9,16 @@ namespace Assets.Scripts.Common.Session.States
    public class InitState : GlobalSessionStateBase
    {
       [Inject] private ScenesLoader _scenesLoader;
+      [Inject] private GameInitializer _gameInitializer;
       
-      protected override void OnStateEnter()
+      protected override async void OnStateEnter()
       {
-         _globalSession.SetState<MainMenuState>();//пока заглушка
+         if (_scenesLoader.CurScene != SceneNames.InitGameScene)
+         {
+            await _scenesLoader.LoadInitGameScene();
+         }
+         await _gameInitializer.Initialize();
+         _globalSession.SetState<MainMenuState>();
       }
       
    }

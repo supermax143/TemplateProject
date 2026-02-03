@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Common.Localization
 {
-    internal class LocalizationController : IInitializable, ILocalization
+    internal class LocalizationController : ILocalization
     {
 
         public event Action<string> LanguageChanged;
@@ -16,7 +17,7 @@ namespace Assets.Scripts.Common.Localization
         private const string LOCALIZATION_KEY = "Localization";
         private const string DefaultLanguageCode = "ru";
 
-        private char _separator = ';';
+        private char _separator = '|';
 
         /// <summary>
         /// Текущий код языка (например, "ru", "en").
@@ -35,7 +36,7 @@ namespace Assets.Scripts.Common.Localization
         private List<string> _languageCodes = new();
 
 
-        public async void Initialize()
+        public async Task Initialize()
         {
             var localizationText = await AddressableExtention.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
             Initialize(localizationText?.text);
@@ -46,16 +47,13 @@ namespace Assets.Scripts.Common.Localization
             return GetHashCode().ToString();
         }
 
-        private void Initialize(string csvText, string languageCode = null, char? separator = null)
+        private void Initialize(string csvText)
         {
             if (string.IsNullOrWhiteSpace(csvText))
             {
                 Debug.LogError("[LocalizationController] Пустой текст CSV. Нечего загружать.");
                 return;
             }
-
-            _separator = separator ?? ';';
-            var defaultLang = string.IsNullOrWhiteSpace(languageCode) ? DefaultLanguageCode : languageCode.Trim();
 
             using var reader = new StringReader(csvText);
 
@@ -129,7 +127,7 @@ namespace Assets.Scripts.Common.Localization
             Debug.Log($"[LocalizationController] Успешно загружено языков: {_languageCodes.Count}");
 
             // Устанавливаем язык по умолчанию после загрузки.
-            SetLanguage(defaultLang);
+            SetLanguage(DefaultLanguageCode);
         }
 
         /// <summary>

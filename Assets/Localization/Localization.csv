@@ -1,10 +1,6 @@
-key;ru;en
-main_menu_title;Главное меню;Main Menu
-main_menu_start;Начать игру;Start Game
-main_menu_settings;Настройки;Settings
-main_menu_exit;Выход;Exit
-game_hud_score;Счёт: {0};Score: {0}
-game_hud_pause;Пауза;Paused
-window_example_title;Пример окна;Example Window
-window_example_body;"Это тестовая локализация из Excel/CSV.";This is a test localization from Excel/CSV.
-error_network;Ошибка сети;Network error
+key|ru|en
+initialization_title|Инициализация...|Initialization...
+main_menu_title|Главное меню|Main Menu
+main_menu_button_start|Начать игру|Start Game
+game_title|Игровая сцена|Game scene
+show_window_button|Показать окно|Show window

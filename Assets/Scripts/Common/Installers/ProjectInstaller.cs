@@ -10,6 +10,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using System.Threading.Tasks;
 using Assets.Scripts.Common.Localization;
 using Assets.Scripts.Common.Session;
+using Common.Game;
 
 namespace Assets.Scripts.Common.Installers
 {
@@ -37,6 +38,7 @@ namespace Assets.Scripts.Common.Installers
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<GameInitializer>().AsSingle().NonLazy();
       }
 
       private static void InitializeAddressables()

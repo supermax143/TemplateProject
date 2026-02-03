@@ -1,4 +1,4 @@
-using Session;
+using Assets.Scripts.Common.Session;
 using UnityEngine;
 using Zenject;
 

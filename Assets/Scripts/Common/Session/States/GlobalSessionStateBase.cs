@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
+using Assets.Scripts.Common.Session;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Android;
 using Zenject;
 
-namespace Session.States
+namespace Assets.Scripts.Common.Session.States
 {
    public abstract class GlobalSessionStateBase : MonoBehaviour
    {

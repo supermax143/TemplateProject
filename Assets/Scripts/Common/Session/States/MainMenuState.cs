@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using Zenject;
 
-namespace Session.States
+namespace Assets.Scripts.Common.Session.States
 {
    public class MainMenuState : GlobalSessionStateBase
    {

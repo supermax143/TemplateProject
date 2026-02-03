@@ -1,3 +1,5 @@
 ﻿<Solution>
+  <Project Path="Common.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="View.csproj" />
 </Solution>

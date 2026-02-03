@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Localization
+namespace Assets.Scripts.Common.Localization
 {
     public class LocalizationController : IInitializable
     {

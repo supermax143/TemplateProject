@@ -1,16 +1,17 @@
+using System.ComponentModel;
 using DefaultNamespace;
-using Localization;
 using Windows;
 using ResourceManager.Runtime;
-using Session;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System.Threading.Tasks;
+using Assets.Scripts.Common.Localization;
+using Assets.Scripts.Common.Session;
 
-namespace Installers
+namespace Assets.Scripts.Common.Installers
 {
    public class ProjectInstaller : MonoInstaller
    {
@@ -20,9 +21,6 @@ namespace Installers
       [SerializeField, HideInInspector]
       private WindowsController _windowsController;
       
-      [Header("Localization")]
-      [SerializeField]
-      private string _localizationAddressKey = "Localization";
       
       private void OnValidate()
       {
@@ -39,7 +37,7 @@ namespace Installers
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
-        }
+      }
 
       private static void InitializeAddressables()
       {

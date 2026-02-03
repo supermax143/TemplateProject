@@ -5,7 +5,7 @@ namespace Windows
 {
 	/// <summary>
 	///     Базовый класс для window'ов, реализующий интерфейс IWindow.
-	///     Наследуйте от этого класса для создания собственных window'ов.
+	///     Наследуйте от этого класса для создания собственных окон
 	/// </summary>
 	public abstract class WindowBase : MonoBehaviour, IWindow
 	{

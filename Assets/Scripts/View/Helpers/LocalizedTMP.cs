@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
-using Localization;
 using Zenject;
+using Assets.Scripts.Common.Localization;
 
 namespace Assets.Scripts.View.Helpers
 {

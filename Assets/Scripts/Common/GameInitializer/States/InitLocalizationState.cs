@@ -2,16 +2,18 @@
 using Assets.Scripts.Common.Localization;
 using Zenject;
 
-namespace Common.Game
+namespace Common.Game.States
 {
-   internal class GameInitializer
+   internal class InitLocalizationState : InitializeStateBase
    {
+      
       [Inject] private LocalizationController _localizationController;
       
-      public async Task Initialize()
+      public override string Ident => "init_localization";
+      
+      public override async Task Execute()
       {
          await _localizationController.Initialize();
-         await Task.Delay(1000);
       }
    }
 }

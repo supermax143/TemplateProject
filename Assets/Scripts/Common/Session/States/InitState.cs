@@ -17,7 +17,7 @@ namespace Assets.Scripts.Common.Session.States
          {
             await _scenesLoader.LoadInitGameScene();
          }
-         await _gameInitializer.Initialize();
+         await _gameInitializer.InitializeGame();
          _globalSession.SetState<MainMenuState>();
       }
       

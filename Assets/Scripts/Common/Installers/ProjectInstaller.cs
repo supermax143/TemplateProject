@@ -34,11 +34,11 @@ namespace Assets.Scripts.Common.Installers
       {
          InitializeAddressables();
 
-         Container.BindInstance(globalSession).AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
          Container.BindInterfacesAndSelfTo<GameInitializer>().AsSingle().NonLazy();
+         Container.BindInstance(globalSession).AsSingle();
       }
 
       private static void InitializeAddressables()

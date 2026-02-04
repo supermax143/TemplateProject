@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Assets.Scripts.Common.Session.States
+namespace Common.Session.States
 {
    public abstract class GlobalSessionStateBase : MonoBehaviour
    {

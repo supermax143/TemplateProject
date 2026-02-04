@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common.Windows;
-using GUI.Windows;
-using ResourceManager.Runtime;
+using Common.ResourceManager;
 using UnityEngine;
 using Zenject;
 
-namespace Windows
+namespace Common.Windows
 {
 	/// <summary>
 	///     Менеджер для управления window'ами.
@@ -48,9 +46,16 @@ namespace Windows
             AddressableExtention.ReleaseTag(GetWindowUnloadTag(member.WindowName));
 
             var isWindowsListEmpty = !_windowsList.Any();
-            if (isLastMember) OnActiveWindowChanged?.Invoke();
+            if (isLastMember)
+            {
+                OnActiveWindowChanged?.Invoke();
+            }
 
-            if (isWindowsListEmpty && !_loadingWindows.Any()) OnLastWindowClosed?.Invoke();
+            if (isWindowsListEmpty && !_loadingWindows.Any())
+            {
+                OnLastWindowClosed?.Invoke();
+            }
+            
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
         

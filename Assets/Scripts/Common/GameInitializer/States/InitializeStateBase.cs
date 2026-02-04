@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using XDiffGui;
 
-namespace Common.Game.States
+namespace Common.GameInitializer.States
 {
    internal abstract class InitializeStateBase
    {

@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace Common.Scenes
 {
    internal static class SceneNames
    {

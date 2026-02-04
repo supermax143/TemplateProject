@@ -1,8 +1,6 @@
-using GUI.Windows;
-using UnityEngine;
-using Zenject;
+using Common.Windows;
 
-namespace Windows
+namespace View.Windows
 {
 	[Window(nameof(ExampleWindow))]
 	public class ExampleWindow : WindowBase

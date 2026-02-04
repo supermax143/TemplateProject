@@ -1,13 +1,16 @@
-using Assets.Scripts.Common.Session;
+using Common.Session;
 using UnityEngine;
 using Zenject;
 
-public class MainMenu : MonoBehaviour
+namespace View
 {
-	[Inject] private GlobalSession _globalSession;
-
-	public void StartGame()
+	public class MainMenu : MonoBehaviour
 	{
-		_globalSession.CurState.StartGame();
+		[Inject] private GlobalSession _globalSession;
+
+		public void StartGame()
+		{
+			_globalSession.CurState.StartGame();
+		}
 	}
 }

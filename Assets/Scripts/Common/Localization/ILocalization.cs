@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Common.Localization
+namespace Common.Localization
 {
    public interface ILocalization
    {

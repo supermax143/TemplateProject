@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using Assets.Scripts.Common.Localization;
-using Common.Game;
-using DefaultNamespace;
+﻿using Common.Scenes;
 using Zenject;
 
-namespace Assets.Scripts.Common.Session.States
+namespace Common.Session.States
 {
    public class InitState : GlobalSessionStateBase
    {
       [Inject] private ScenesLoader _scenesLoader;
-      [Inject] private GameInitializer _gameInitializer;
+      [Inject] private GameInitializer.GameInitializer _gameInitializer;
       
       protected override async void OnStateEnter()
       {

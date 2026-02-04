@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace DefaultNamespace
+namespace Common.Scenes
 {
    internal class ScenesLoader  
    {

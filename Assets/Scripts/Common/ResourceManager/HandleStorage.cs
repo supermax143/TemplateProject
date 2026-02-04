@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace ResourceManager.Runtime
+namespace Common.ResourceManager
 {
     public class HandleStorage : IDisposable
     {

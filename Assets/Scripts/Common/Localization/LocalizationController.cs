@@ -1,13 +1,12 @@
-using ResourceManager.Runtime;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Common.ResourceManager;
 using UnityEngine;
-using Zenject;
 
-namespace Assets.Scripts.Common.Localization
+namespace Common.Localization
 {
     internal class LocalizationController : ILocalization
     {
@@ -15,9 +14,9 @@ namespace Assets.Scripts.Common.Localization
         public event Action<string> LanguageChanged;
 
         private const string LOCALIZATION_KEY = "Localization";
-        private const string DefaultLanguageCode = "ru";
-
-        private char _separator = '|';
+        private const string DEFAULT_LANGUAGE_CODE = "ru";
+        private const char SEPARATOR = '|';
+        
         private readonly Dictionary<string, string> _currentLanguageTable = new();
         private readonly Dictionary<string, Dictionary<string, string>> _allLanguages
             = new(StringComparer.OrdinalIgnoreCase);
@@ -25,7 +24,8 @@ namespace Assets.Scripts.Common.Localization
         private List<string> _languageCodes = new();
 
         public string CurrentLanguageCode { get; private set; }
-        public bool Initialized { get; private set; } = false;
+        
+        public bool Initialized { get; private set; }
 
         public async Task Initialize()
         {
@@ -118,7 +118,7 @@ namespace Assets.Scripts.Common.Localization
             Debug.Log($"[LocalizationController] Успешно загружено языков: {_languageCodes.Count}");
 
             Initialized =  true;
-            SetLanguage(DefaultLanguageCode);
+            SetLanguage(DEFAULT_LANGUAGE_CODE);
         }
 
        
@@ -160,9 +160,11 @@ namespace Assets.Scripts.Common.Localization
                 return string.Empty;
 
             if (_currentLanguageTable.TryGetValue(key, out var value) && !string.IsNullOrEmpty(value))
+            {
                 return value;
+            }
 
-            // Фолбэк — вернуть ключ, чтобы сразу видеть "битые" строки.
+            // fallback — вернуть ключ, чтобы сразу видеть "битые" строки.
             return key;
         }
 
@@ -205,7 +207,7 @@ namespace Assets.Scripts.Common.Localization
                         inQuotes = !inQuotes;
                     }
                 }
-                else if (c == _separator && !inQuotes)
+                else if (c == SEPARATOR && !inQuotes)
                 {
                     result.Add(sb.ToString());
                     sb.Clear();

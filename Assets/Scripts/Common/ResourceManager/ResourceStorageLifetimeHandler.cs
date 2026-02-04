@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ResourceManager.Runtime
+namespace Common.ResourceManager
 {
     internal class ResourceStorageLifetimeHandler : MonoBehaviour
     {

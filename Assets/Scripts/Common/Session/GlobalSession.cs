@@ -1,10 +1,8 @@
-﻿using System;
-using Assets.Scripts.Common.Session.States;
+﻿using Common.Session.States;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Zenject;
 
-namespace Assets.Scripts.Common.Session
+namespace Common.Session
 {
    public class GlobalSession : MonoBehaviour
    {

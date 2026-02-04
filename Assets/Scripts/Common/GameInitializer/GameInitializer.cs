@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Assets.Scripts.Common.Localization;
-using Common.Game.States;
+using Common.GameInitializer.States;
+using Common.Localization;
 using Zenject;
 
-namespace Common.Game
+namespace Common.GameInitializer
 {
    internal class GameInitializer : IInitializable, IInitializeProgress
    {

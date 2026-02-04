@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Common.Game.States
+namespace Common.GameInitializer.States
 {
    internal class LoginState : InitializeStateBase
    {

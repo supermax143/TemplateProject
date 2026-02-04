@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace ResourceManager.Runtime
+namespace Common.ResourceManager
 {
     public readonly struct HandleDependencies
     {

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Assets.Scripts.Common.Localization;
+using Common.Localization;
 using Zenject;
 
-namespace Common.Game.States
+namespace Common.GameInitializer.States
 {
    internal class InitLocalizationState : InitializeStateBase
    {

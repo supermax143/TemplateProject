@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Game
+namespace Common.GameInitializer
 {
    public interface IInitializeProgress
    {

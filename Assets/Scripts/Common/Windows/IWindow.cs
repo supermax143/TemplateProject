@@ -1,11 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace Windows
+namespace Common.Windows
 {
-	/// <summary>
-	///     Интерфейс для window'ов, которые могут управляться через WindowManager
-	/// </summary>
+
 	public interface IWindow
 	{
 		GameObject GameObject { get; }

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace ResourceManager.Runtime
+namespace Common.ResourceManager
 {
     public static class AssetReferenceExtension
     {

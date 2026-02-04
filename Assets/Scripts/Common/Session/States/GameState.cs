@@ -1,8 +1,7 @@
-﻿using DefaultNamespace;
-using UnityEngine;
+﻿using Common.Scenes;
 using Zenject;
 
-namespace Assets.Scripts.Common.Session.States {
+namespace Common.Session.States {
 	public class GameState : GlobalSessionStateBase
 	{
 		

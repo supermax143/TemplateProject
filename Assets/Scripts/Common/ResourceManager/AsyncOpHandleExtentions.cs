@@ -1,9 +1,8 @@
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace ResourceManager.Runtime
+namespace Common.ResourceManager
 {
     public static class AsyncOpHandleExtension
     {

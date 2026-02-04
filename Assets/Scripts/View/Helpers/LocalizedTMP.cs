@@ -1,9 +1,9 @@
-using UnityEngine;
+using Common.Localization;
 using TMPro;
+using UnityEngine;
 using Zenject;
-using Assets.Scripts.Common.Localization;
 
-namespace Assets.Scripts.View.Helpers
+namespace View.Helpers
 {
     [RequireComponent(typeof(TMP_Text))]
     public class LocalizedTMP : MonoBehaviour
@@ -38,7 +38,7 @@ namespace Assets.Scripts.View.Helpers
             UpdateText();
         }
 
-        public void UpdateText()
+        private void UpdateText()
         {
             if (string.IsNullOrEmpty(_key))
                 return;

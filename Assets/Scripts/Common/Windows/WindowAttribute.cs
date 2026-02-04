@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace GUI.Windows
+namespace Common.Windows
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	public class WindowAttribute : Attribute
@@ -11,7 +11,7 @@ namespace GUI.Windows
 			Name = name;
 		}
 
-		public string Name { get; }
+		private string Name { get; }
 
 		public static bool TryGetName<T>(out string name)
 		{
@@ -20,7 +20,7 @@ namespace GUI.Windows
 
 		public static bool TryGetName(Type t, out string name)
 		{
-			name = default;
+			name = "";
 
 			if (!(t.GetCustomAttributes(typeof(WindowAttribute), true)
 				    .FirstOrDefault() is WindowAttribute attribute))

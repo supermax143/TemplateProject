@@ -1,7 +1,8 @@
 using System;
+using Common.Windows;
 using UnityEngine;
 
-namespace Windows
+namespace View.Windows
 {
 	/// <summary>
 	///     Базовый класс для window'ов, реализующий интерфейс IWindow.

@@ -1,6 +1,6 @@
-﻿using Windows;
-using Common.Windows;
+﻿using Common.Windows;
 using UnityEngine;
+using View.Windows;
 using Zenject;
 
 namespace View

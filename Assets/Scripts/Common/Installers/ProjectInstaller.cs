@@ -1,18 +1,12 @@
-using System.ComponentModel;
-using DefaultNamespace;
-using Windows;
-using ResourceManager.Runtime;
+using Common.Localization;
+using Common.ResourceManager;
+using Common.Scenes;
+using Common.Session;
+using Common.Windows;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using System.Threading.Tasks;
-using Assets.Scripts.Common.Localization;
-using Assets.Scripts.Common.Session;
-using Common.Game;
 
-namespace Assets.Scripts.Common.Installers
+namespace Common.Installers
 {
    internal class ProjectInstaller : MonoInstaller
    {
@@ -37,7 +31,7 @@ namespace Assets.Scripts.Common.Installers
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
-         Container.BindInterfacesAndSelfTo<GameInitializer>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<GameInitializer.GameInitializer>().AsSingle().NonLazy();
          Container.BindInstance(globalSession).AsSingle();
       }
 

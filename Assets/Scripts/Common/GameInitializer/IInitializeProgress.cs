@@ -4,8 +4,9 @@ namespace Common.Game
 {
    public interface IInitializeProgress
    {
-      event Action OnInitStepComplete;
-      string CurStateIdent { get; }
+      event Action OnInitializationComplete;
+      string CurStepIdent { get; }
       float Progress { get; }
+      event Action OnInitStepStarted;
    }
 }

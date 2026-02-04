@@ -18,23 +18,14 @@ namespace Assets.Scripts.Common.Localization
         private const string DefaultLanguageCode = "ru";
 
         private char _separator = '|';
-
-        /// <summary>
-        /// Текущий код языка (например, "ru", "en").
-        /// </summary>
-        public string CurrentLanguageCode { get; private set; }
-
-        /// <summary>
-        /// Список доступных языков (из заголовка CSV).
-        /// </summary>
-        public IReadOnlyList<string> AvailableLanguages => _languageCodes;
-
         private readonly Dictionary<string, string> _currentLanguageTable = new();
         private readonly Dictionary<string, Dictionary<string, string>> _allLanguages
             = new(StringComparer.OrdinalIgnoreCase);
 
         private List<string> _languageCodes = new();
 
+        public string CurrentLanguageCode { get; private set; }
+        public bool Initialized { get; private set; } = false;
 
         public async Task Initialize()
         {
@@ -126,13 +117,11 @@ namespace Assets.Scripts.Common.Localization
 
             Debug.Log($"[LocalizationController] Успешно загружено языков: {_languageCodes.Count}");
 
-            // Устанавливаем язык по умолчанию после загрузки.
+            Initialized =  true;
             SetLanguage(DefaultLanguageCode);
         }
 
-        /// <summary>
-        /// Установить текущий язык по коду (должен совпадать с заголовком столбца, например 'ru', 'en').
-        /// </summary>
+       
         public void SetLanguage(string languageCode)
         {
             if (string.IsNullOrWhiteSpace(languageCode))
@@ -149,7 +138,6 @@ namespace Assets.Scripts.Common.Localization
                 return;
             }
 
-            // If language didn't change - nothing to do
             if (string.Equals(CurrentLanguageCode, languageCode, StringComparison.OrdinalIgnoreCase))
                 return;
 
@@ -165,10 +153,7 @@ namespace Assets.Scripts.Common.Localization
             LanguageChanged?.Invoke(languageCode);
         }
 
-        /// <summary>
-        /// Получить локализованную строку по ключу для текущего языка.
-        /// При отсутствии ключа вернётся сам ключ.
-        /// </summary>
+        
         public string Get(string key)
         {
             if (string.IsNullOrEmpty(key))
@@ -181,9 +166,7 @@ namespace Assets.Scripts.Common.Localization
             return key;
         }
 
-        /// <summary>
-        /// Попробовать получить строку; вернуть true, если ключ найден.
-        /// </summary>
+      
         public bool TryGet(string key, out string value)
         {
             if (string.IsNullOrEmpty(key))
@@ -195,10 +178,7 @@ namespace Assets.Scripts.Common.Localization
             return _currentLanguageTable.TryGetValue(key, out value);
         }
 
-        /// <summary>
-        /// Простая разбивка строки CSV по разделителю с учетом возможных кавычек.
-        /// Достаточно для типичных экспортов из Excel.
-        /// </summary>
+     
         private string[] SplitCsvLine(string line)
         {
             if (line == null)

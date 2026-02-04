@@ -8,7 +8,7 @@ namespace Common.Game.States
       
       public override async Task Execute()
       {
-         await Task.Delay(1000);//TODO: заглушка
+         await Task.Delay(3000);//TODO: заглушка
       }
    }
 }

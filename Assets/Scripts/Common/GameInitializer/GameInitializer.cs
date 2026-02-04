@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Assets.Scripts.Common.Localization;
 using Common.Game.States;
-using UnityEngine;
 using Zenject;
 
 namespace Common.Game
@@ -13,13 +12,14 @@ namespace Common.Game
       [Inject] private LocalizationController _localizationController;
       [Inject] private DiContainer _container;
     
-      public event Action OnInitStepComplete;
+      public event Action OnInitStepStarted;
+      public event Action OnInitializationComplete;
       
       private readonly List<InitializeStateBase> _states = new List<InitializeStateBase>();
 
       private InitializeStateBase _curState;
       
-      public string CurStateIdent => _curState?.Ident ?? "";
+      public string CurStepIdent => _curState?.Ident ?? "";
       public float Progress { get; private set; }
       
       
@@ -34,11 +34,15 @@ namespace Common.Game
       {
          for (int i = 0; i < _states.Count; i++)
          {
+            UpdateProgress(i);
             _curState = _states[i];
+            OnInitStepStarted?.Invoke();
             await _curState.Execute();
-            OnInitStepComplete?.Invoke();
-            UpdateProgress(i+1);
          }
+         UpdateProgress(_states.Count);
+         _curState = null;
+         OnInitializationComplete?.Invoke();
+         await Task.Delay(1000);
       }
 
       private void UpdateProgress(int index)

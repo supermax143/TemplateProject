@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.ResourceManager;
@@ -14,7 +15,6 @@ namespace Common.Localization
         public event Action<string> LanguageChanged;
 
         private const string LOCALIZATION_KEY = "Localization";
-        private const string DEFAULT_LANGUAGE_CODE = "ru";
         private const char SEPARATOR = '|';
         
         private readonly Dictionary<string, string> _currentLanguageTable = new();
@@ -26,6 +26,8 @@ namespace Common.Localization
         public string CurrentLanguageCode { get; private set; }
         
         public bool Initialized { get; private set; }
+
+        public List<string> LanguageCodes => _languageCodes;
 
         public async Task Initialize()
         {
@@ -75,11 +77,11 @@ namespace Common.Localization
                 if (!_allLanguages.ContainsKey(langCode))
                 {
                     _allLanguages[langCode] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-                    _languageCodes.Add(langCode);
+                    LanguageCodes.Add(langCode);
                 }
             }
 
-            if (_languageCodes.Count == 0)
+            if (LanguageCodes.Count == 0)
             {
                 Debug.LogError("[LocalizationController] Не найдено ни одного языка в заголовке.");
                 return;
@@ -115,10 +117,10 @@ namespace Common.Localization
                 }
             }
 
-            Debug.Log($"[LocalizationController] Успешно загружено языков: {_languageCodes.Count}");
+            Debug.Log($"[LocalizationController] Успешно загружено языков: {LanguageCodes.Count}");
 
             Initialized =  true;
-            SetLanguage(DEFAULT_LANGUAGE_CODE);
+            SetLanguage(_languageCodes.First());
         }
 
        

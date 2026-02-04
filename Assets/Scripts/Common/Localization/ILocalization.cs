@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Common.Localization
 {
@@ -9,5 +10,8 @@ namespace Common.Localization
 
       event Action<string> LanguageChanged;
       bool Initialized { get; }
+      string CurrentLanguageCode { get; }
+      List<string> LanguageCodes { get; }
+      void SetLanguage(string languageCode);
    }
 }

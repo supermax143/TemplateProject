@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Common.Session.States
 {
-   public class MainMenuState : GlobalSessionStateBase
+   internal class MainMenuState : GlobalSessionStateBase
    {
 
       [Inject] ScenesLoader _scenesLoader;
@@ -15,7 +15,7 @@ namespace Common.Session.States
 
       public override void StartGame() 
       {
-         _globalSession.SetState<GameState>();
+         Session.ChangeState<GameState>();
       }
 
    }

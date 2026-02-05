@@ -1,9 +1,10 @@
-﻿using Common.Scenes;
+﻿using System;
+using Common.Scenes;
 using Zenject;
 
 namespace Common.Session.States
 {
-   public class InitState : GlobalSessionStateBase
+   internal class InitState : GlobalSessionStateBase
    {
       [Inject] private ScenesLoader _scenesLoader;
       [Inject] private GameInitializer.GameInitializer _gameInitializer;
@@ -15,7 +16,7 @@ namespace Common.Session.States
             await _scenesLoader.LoadInitGameScene();
          }
          await _gameInitializer.InitializeGame();
-         _globalSession.SetState<MainMenuState>();
+         Session.ChangeState<MainMenuState>();
       }
       
    }

@@ -3,19 +3,19 @@ using Zenject;
 
 namespace Common.Session.States
 {
-   public abstract class GlobalSessionStateBase : MonoBehaviour
+   internal abstract class GlobalSessionStateBase : ISessionState
    {
       
-      [Inject] protected GlobalSession _globalSession;
+      [Inject] protected Session Session;
 
-      private void Start()
+      public void Enter()
       {
          OnStateEnter();
       }
 
-      public void ExitState()
+      public void Exit()
       {
-         Destroy(this);
+         OnStateExit();
       }
 
       public virtual void StartGame() { }
@@ -27,9 +27,5 @@ namespace Common.Session.States
       {
       }
 
-      private void OnDestroy()
-      {
-         OnStateExit();
-      }
    }
 }

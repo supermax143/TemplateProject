@@ -149,9 +149,18 @@ namespace Common.ResourceManager
 
         private void ReleaseHandle(AsyncOperationHandle handle)
         {
-            while (handle.IsValid())
+            if (!handle.IsValid())
+            {
+                return;
+            }
+        
+            try
             {
                 Addressables.Release(handle);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Failed to release handle: {ex.Message}");
             }
         }
     }

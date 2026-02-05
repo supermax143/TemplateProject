@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Common.ResourceManager;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -59,31 +61,31 @@ namespace Common.Windows
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
         
-        public void ShowWindowAsync<TWindow>(Action<IWindow> initCallback) where TWindow : IWindow
+        public void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : IWindow
         {
-            ShowWindowAsync(typeof(TWindow), initCallback);
+            ShowWindowInternal<TWindow>(handler).Forget();
+        }
+
+        private async UniTask ShowWindowInternal<TWindow>(Action<IWindow> handler) where TWindow : IWindow
+        {
+            var window = await ShowWindow<TWindow>();
+            handler?.Invoke(window);
         }
         
-
-        public void ShowWindowAsync(Type windowType, Action<IWindow> initCallback)
+        public async UniTask<IWindow> ShowWindow<TWindow>() where TWindow : IWindow
         {
+            var windowType =  typeof(TWindow);
             if (!WindowAttribute.TryGetName(windowType, out var windowName))
             {
                 Debug.LogError($"Can't find Window attribute on Type {windowType.Name}");
-                return;
+                return null;
             }
-
-            LoadWindow(windowName, initCallback);
-        }
-
-        private async void LoadWindow(string windowName, Action<IWindow> callback)
-        {
+            
             _loadingWindows.Add(windowName);
             OnWindowStartLoading?.Invoke(windowName);
 
             var windowPrefab = await AddressableExtention.Load<GameObject>(windowName, GetWindowUnloadTag(windowName));
-
-            callback?.Invoke(InitializeInstance(windowPrefab, windowName));
+            return InitializeInstance(windowPrefab, windowName);
         }
 
         private IWindow InitializeInstance(GameObject windowPrefab, string windowName)

@@ -1,4 +1,5 @@
 ﻿using Common.Windows;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using View.Windows;
 using Zenject;
@@ -11,7 +12,8 @@ namespace View
         
         public void ShowExampleWindow()
         {
-            _windowsController.ShowWindowAsync<ExampleWindow>( window => window.Show());
+           _windowsController.ShowWindow<ExampleWindow>( window => window.Show());
+           
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Common.Windows
 
         public event Action<string> OnWindowStartLoading;
         public event Action OnActiveWindowChanged;
-        public event Action OnWindowShown;
+        public event Action OnWindowLoadComplete;
         public event Action<string> OnAnyWindowClosed;
         public event Action OnLastWindowClosed;
 
@@ -80,12 +80,31 @@ namespace Common.Windows
                 Debug.LogError($"Can't find Window attribute on Type {windowType.Name}");
                 return null;
             }
-            
-            _loadingWindows.Add(windowName);
-            OnWindowStartLoading?.Invoke(windowName);
+            try
+            {
+                
+                _loadingWindows.Add(windowName);
+                OnWindowStartLoading?.Invoke(windowName);
 
-            var windowPrefab = await AddressableExtention.Load<GameObject>(windowName, GetWindowUnloadTag(windowName));
-            return InitializeInstance(windowPrefab, windowName);
+                var windowPrefab = await AddressableExtention.Load<GameObject>(windowName, GetWindowUnloadTag(windowName));
+                if (windowPrefab == null)
+                {
+                    Debug.LogError($"Failed to load window prefab: {windowName}");
+                    return null;
+                }
+                
+                return InitializeInstance(windowPrefab, windowName);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Exception while loading window {windowName}: {ex}");
+                return null;
+            }
+            finally
+            {
+                _loadingWindows.Remove(windowName);
+            }
+            
         }
 
         private IWindow InitializeInstance(GameObject windowPrefab, string windowName)
@@ -101,7 +120,7 @@ namespace Common.Windows
             _windowsList.Add(windowsListMember);
 
 
-            OnWindowShown?.Invoke();
+            OnWindowLoadComplete?.Invoke();
 
             return window;
         }

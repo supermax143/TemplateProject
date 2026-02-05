@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Common.Session
 {
-   public class Session : MonoBehaviour
+   internal class Session : ISession, IInitializable
    {
 
       public event Action<ISessionState> OnStateChanged;
@@ -16,10 +16,11 @@ namespace Common.Session
 
       public ISessionState CurrentState => _currentState;
 
-      private void Start()
+      public void Initialize()
       {
          ChangeState<InitState>();
       }
+      
 
       public void ChangeState<TState>() where TState : ISessionState
       {
@@ -39,6 +40,7 @@ namespace Common.Session
             
          OnStateChanged?.Invoke(_currentState);
       }
-      
+
+     
    }
 }

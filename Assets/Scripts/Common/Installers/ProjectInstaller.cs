@@ -13,14 +13,11 @@ namespace Common.Installers
    {
 
       [SerializeField, HideInInspector]
-      private Session.Session _session;
-      [SerializeField, HideInInspector]
       private WindowsController _windowsController;
       
       
       private void OnValidate()
       {
-         _session = GetComponent<Session.Session>();
          _windowsController = GetComponent<WindowsController>();
       }
 
@@ -33,11 +30,12 @@ namespace Common.Installers
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
          Container.BindInterfacesAndSelfTo<GameInitializer.GameInitializer>().AsSingle().NonLazy();
-         Container.BindInstance(_session).AsSingle();
-         // States
+         
+         // Session
          Container.Bind<InitState>().AsTransient();
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
+         Container.BindInterfacesAndSelfTo<Session.Session>().AsSingle().NonLazy();
       }
 
       private static void InitializeAddressables()

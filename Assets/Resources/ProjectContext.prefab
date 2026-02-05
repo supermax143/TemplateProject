@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2638617841443220894}
   - component: {fileID: 4218963708455673376}
   - component: {fileID: 2313786603311181199}
-  - component: {fileID: -6207519286421753537}
   - component: {fileID: 4875320979819222349}
   m_Layer: 0
   m_Name: ProjectContext
@@ -82,20 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153bd41de909416ba6e393c9128c6d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalSession: {fileID: -6207519286421753537}
   _windowsController: {fileID: 4875320979819222349}
---- !u!114 &-6207519286421753537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299838211194370913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd155fcd0620d34e97136cc4bf5929c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4875320979819222349
 MonoBehaviour:
   m_ObjectHideFlags: 0

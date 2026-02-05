@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Common.Session.States
 {
-   internal class InitState : GlobalSessionStateBase
+   internal class InitState : SessionStateBase
    {
       [Inject] private ScenesLoader _scenesLoader;
       [Inject] private GameInitializer.GameInitializer _gameInitializer;

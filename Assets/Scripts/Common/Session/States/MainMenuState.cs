@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Common.Session.States
 {
-   internal class MainMenuState : GlobalSessionStateBase
+   internal class MainMenuState : SessionStateBase
    {
 
       [Inject] ScenesLoader _scenesLoader;

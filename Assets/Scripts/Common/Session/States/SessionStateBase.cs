@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Common.Session.States
 {
-   internal abstract class GlobalSessionStateBase : ISessionState
+   internal abstract class SessionStateBase : ISessionState
    {
       
       [Inject] protected Session Session;

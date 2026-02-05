@@ -10,7 +10,7 @@ namespace View
 {
 	public class MainMenu : MonoBehaviour
 	{
-		[Inject] private Session _session;
+		[Inject] private ISession _session;
 		[Inject] private ILocalization _localization;
 		
 		[SerializeField]

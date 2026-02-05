@@ -2,7 +2,7 @@
 using Zenject;
 
 namespace Common.Session.States {
-	internal class GameState : GlobalSessionStateBase
+	internal class GameState : SessionStateBase
 	{
 		
 		[Inject] ScenesLoader _scenesLoader;

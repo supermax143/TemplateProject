@@ -13,5 +13,6 @@ namespace Common.Localization
       string CurrentLanguageCode { get; }
       List<string> LanguageCodes { get; }
       void SetLanguage(string languageCode);
+      bool TryGetLanguageCodes(out IEnumerable<string> codes);
    }
 }

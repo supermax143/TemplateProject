@@ -18,10 +18,22 @@ namespace View
 
 		private void Start()
 		{
-			_languageSelector.options = _localization.LanguageCodes.
+			UpdateLangugeSelector();
+		}
+
+		private void UpdateLangugeSelector()
+		{
+			if (!_localization.TryGetLanguageCodes(out var codes))
+			{
+				return;
+			}
+			
+			_languageSelector.options = codes.
 				Select(code => new TMP_Dropdown.OptionData { text = code } ).ToList();
+			
 			_languageSelector.onValueChanged.AddListener(OnLangugeChanged);
 		}
+
 
 		private void OnLangugeChanged(int value)
 		{

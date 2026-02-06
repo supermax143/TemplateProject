@@ -2,7 +2,7 @@
 
 namespace Common.GameInitializer.States
 {
-   internal abstract class InitializeStateBase
+   internal abstract class InitializeStepBase
    {
       public abstract string Ident { get; }
       

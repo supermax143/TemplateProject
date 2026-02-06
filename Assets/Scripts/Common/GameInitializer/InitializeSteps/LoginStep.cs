@@ -2,13 +2,13 @@
 
 namespace Common.GameInitializer.States
 {
-   internal class LoginState : InitializeStateBase
+   internal class LoginStep : InitializeStepBase
    {
       public override string Ident => "login_state";
       
       public override async Task Execute()
       {
-         await Task.Delay(3000);//TODO: заглушка
+         await Task.Delay(1000);//TODO: заглушка
       }
    }
 }

@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Common.GameInitializer
 {
-   internal class GameInitializer : IInitializable, IInitializeProgress
+   internal class GameInitializer : IInitializeProgress
    {
       [Inject] private LocalizationController _localizationController;
       [Inject] private DiContainer _container;
@@ -15,32 +15,27 @@ namespace Common.GameInitializer
       public event Action OnInitStepStarted;
       public event Action OnInitializationComplete;
       
-      private readonly List<InitializeStateBase> _states = new List<InitializeStateBase>();
-
-      private InitializeStateBase _curState;
+      private List<InitializeStepBase> _states;
+      private InitializeStepBase _curStep;
       
-      public string CurStepIdent => _curState?.Ident ?? "";
+      public string CurStepIdent => _curStep?.Ident ?? "";
       public float Progress { get; private set; }
       
       
-      public void Initialize()
+      public async Task Start()
       {
-         _states.Add(_container.Instantiate<InitLocalizationState>());
-         _states.Add(_container.Instantiate<LoginState>());
-         _states.Add(_container.Instantiate<LoadAssetsState>());
-      }
-      
-      public async Task InitializeGame()
-      {
+         
+         _states = _container.ResolveAll<InitializeStepBase>();
+         
          for (int i = 0; i < _states.Count; i++)
          {
             UpdateProgress(i);
-            _curState = _states[i];
+            _curStep = _states[i];
             OnInitStepStarted?.Invoke();
-            await _curState.Execute();
+            await _curStep.Execute();
          }
          UpdateProgress(_states.Count);
-         _curState = null;
+         _curStep = null;
          OnInitializationComplete?.Invoke();
          await Task.Delay(1000);
       }

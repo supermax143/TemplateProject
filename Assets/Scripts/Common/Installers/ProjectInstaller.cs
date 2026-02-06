@@ -1,3 +1,4 @@
+using Common.GameInitializer.States;
 using Common.Localization;
 using Common.ResourceManager;
 using Common.Scenes;
@@ -27,9 +28,14 @@ namespace Common.Installers
          InitializeAddressables();
 
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
-         Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController).AsSingle();
-         Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle().NonLazy();
-         Container.BindInterfacesAndSelfTo<GameInitializer.GameInitializer>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
+         Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameInitializer.GameInitializer>().AsSingle();
+         
+         //Initialization
+         Container.Bind<InitializeStepBase>().To<InitLocalizationStep>().AsTransient();
+         Container.Bind<InitializeStepBase>().To<LoginStep>().AsTransient();
+         Container.Bind<InitializeStepBase>().To<LoadAssetsStep>().AsTransient();
          
          // Session
          Container.Bind<InitState>().AsTransient();

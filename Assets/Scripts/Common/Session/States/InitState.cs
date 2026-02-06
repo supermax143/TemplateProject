@@ -15,7 +15,7 @@ namespace Common.Session.States
          {
             await _scenesLoader.LoadInitGameScene();
          }
-         await _gameInitializer.InitializeGame();
+         await _gameInitializer.Start();
          Session.ChangeState<MainMenuState>();
       }
       

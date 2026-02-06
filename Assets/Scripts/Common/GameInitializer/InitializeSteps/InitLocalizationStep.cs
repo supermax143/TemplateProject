@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Common.GameInitializer.States
 {
-   internal class InitLocalizationState : InitializeStateBase
+   internal class InitLocalizationStep : InitializeStepBase
    {
       
       [Inject] private LocalizationController _localizationController;

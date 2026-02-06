@@ -20,7 +20,6 @@ namespace Common.Session
       {
          ChangeState<InitState>();
       }
-      
 
       internal void ChangeState<TState>() where TState : ISessionStateInternal
       {

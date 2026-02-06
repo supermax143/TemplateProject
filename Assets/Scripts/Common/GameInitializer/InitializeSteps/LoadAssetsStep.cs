@@ -2,13 +2,13 @@
 
 namespace Common.GameInitializer.States
 {
-   internal class LoadAssetsState : InitializeStateBase
+   internal class LoadAssetsStep : InitializeStepBase
    {
       public override string Ident => "load_assets";
       
       public override async Task Execute()
       {
-         await Task.Delay(3000);//TODO: заглушка
+         await Task.Delay(1000);//TODO: заглушка
       }
    }
 }

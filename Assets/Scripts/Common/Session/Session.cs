@@ -12,7 +12,7 @@ namespace Common.Session
       
       [Inject] private DiContainer _container;
 
-      private ISessionState _currentState;
+      private ISessionStateInternal _currentState;
 
       public ISessionState CurrentState => _currentState;
 
@@ -22,13 +22,13 @@ namespace Common.Session
       }
       
 
-      public void ChangeState<TState>() where TState : ISessionState
+      internal void ChangeState<TState>() where TState : ISessionStateInternal
       {
          var newState = _container.Resolve<TState>();
          ChangeState(newState);
       }
       
-      public void ChangeState(ISessionState newState)
+      private void ChangeState(ISessionStateInternal newState)
       {
          if (_currentState != null)
          {

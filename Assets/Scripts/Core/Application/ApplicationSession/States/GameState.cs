@@ -5,7 +5,7 @@ namespace Common.Session.States {
 	internal class GameState : SessionStateBase
 	{
 		
-		[Inject] ScenesLoader _scenesLoader;
+		[Inject] IScenesLoader _scenesLoader;
 		
 		protected override void OnStateEnter()
 		{

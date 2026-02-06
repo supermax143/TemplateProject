@@ -10,7 +10,7 @@ namespace View
 {
 	public class MainMenu : MonoBehaviour
 	{
-		[Inject] private ISession _session;
+		[Inject] private IApplicationSession _applicationSession;
 		[Inject] private ILocalization _localization;
 		
 		[SerializeField]
@@ -42,7 +42,7 @@ namespace View
 
 		public void StartGame()
 		{
-			_session.CurrentState.StartGame();
+			_applicationSession.CurrentState.StartGame();
 		}
 	}
 }

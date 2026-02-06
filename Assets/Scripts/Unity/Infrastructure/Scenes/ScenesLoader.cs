@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Common.Scenes
 {
-   internal class ScenesLoader  
+   internal class ScenesLoader : IScenesLoader  
    {
       [Inject] private ZenjectSceneLoader _sceneLoader;
       
@@ -16,7 +16,7 @@ namespace Common.Scenes
       public async Task  LoadInitGameScene() => await LoadScene(SceneNames.InitGameScene);
       public async Task  LoadMainMenuScene() => await LoadScene(SceneNames.MainMenuScene);
       public async Task  LoadGameScene() => await LoadScene(SceneNames.GameScene);
-      
+
       private async Task LoadScene(string scene)
       {
          if (CurScene == scene)

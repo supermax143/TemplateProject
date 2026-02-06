@@ -6,7 +6,7 @@ namespace Common.Session.States
 {
    internal class InitState : SessionStateBase
    {
-      [Inject] private ScenesLoader _scenesLoader;
+      [Inject] private IScenesLoader _scenesLoader;
       [Inject] private GameInitializer.GameInitializer _gameInitializer;
       
       protected override async void OnStateEnter()
@@ -16,7 +16,7 @@ namespace Common.Session.States
             await _scenesLoader.LoadInitGameScene();
          }
          await _gameInitializer.Start();
-         Session.ChangeState<MainMenuState>();
+         ApplicationSession.ChangeState<MainMenuState>();
       }
       
    }

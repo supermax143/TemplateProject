@@ -6,7 +6,7 @@ namespace Common.Session.States
    internal class MainMenuState : SessionStateBase
    {
 
-      [Inject] ScenesLoader _scenesLoader;
+      [Inject] IScenesLoader _scenesLoader;
       
       protected override void OnStateEnter()
       {
@@ -15,7 +15,7 @@ namespace Common.Session.States
 
       public override void StartGame() 
       {
-         Session.ChangeState<GameState>();
+         ApplicationSession.ChangeState<GameState>();
       }
 
    }

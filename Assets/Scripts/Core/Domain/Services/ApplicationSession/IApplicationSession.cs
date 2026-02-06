@@ -2,7 +2,7 @@
 
 namespace Common.Session
 {
-   public interface ISession
+   public interface IApplicationSession
    {
       ISessionState CurrentState { get; }
    }

@@ -41,7 +41,7 @@ namespace Common.Installers
          Container.Bind<InitState>().AsTransient();
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
-         Container.BindInterfacesAndSelfTo<Session.Session>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<Session.ApplicationSession>().AsSingle().NonLazy();
       }
 
       private static void InitializeAddressables()

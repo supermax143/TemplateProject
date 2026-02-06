@@ -6,7 +6,7 @@ namespace Common.Session.States
    internal abstract class SessionStateBase : ISessionStateInternal
    {
       
-      [Inject] protected Session Session;
+      [Inject] protected ApplicationSession ApplicationSession;
 
       public void Enter()
       {

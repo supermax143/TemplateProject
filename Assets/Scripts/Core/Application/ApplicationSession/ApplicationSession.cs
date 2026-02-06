@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Common.Session
 {
-   internal class Session : ISession, IInitializable
+   internal class ApplicationSession : IApplicationSession, IInitializable
    {
 
       public event Action<ISessionState> OnStateChanged;

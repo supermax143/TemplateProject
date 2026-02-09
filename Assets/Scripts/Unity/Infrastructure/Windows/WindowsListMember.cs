@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common.Windows
+namespace Unity.Infrastructure.Windows
 {
 	internal interface IWindowsMemberHolder
 	{

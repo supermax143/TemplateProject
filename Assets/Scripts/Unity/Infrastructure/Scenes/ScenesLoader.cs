@@ -1,9 +1,11 @@
 ﻿using System.Threading.Tasks;
+using Core.Domain.Services;
+using Shared.Constants;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Common.Scenes
+namespace Unity.Infrastructure.Scenes
 {
    internal class ScenesLoader : IScenesLoader  
    {

@@ -1,4 +1,4 @@
-﻿namespace Common.Scenes
+﻿namespace Shared.Constants
 {
    internal static class SceneNames
    {

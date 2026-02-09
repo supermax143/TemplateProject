@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Common.Windows
+namespace Unity.Infrastructure.Windows
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	public class WindowAttribute : Attribute

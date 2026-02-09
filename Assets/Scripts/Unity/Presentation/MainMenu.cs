@@ -1,12 +1,11 @@
-using System;
 using System.Linq;
-using Common.Localization;
-using Common.Session;
+using Core.Domain.Services;
+using Core.Domain.Services.ApplicationSession;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace View
+namespace Unity.Presentation
 {
 	public class MainMenu : MonoBehaviour
 	{

@@ -1,14 +1,14 @@
-using Common.GameInitializer.States;
-using Common.Localization;
-using Common.ResourceManager;
-using Common.Scenes;
-using Common.Session;
-using Common.Session.States;
-using Common.Windows;
+using Core.Application.ApplicationSession;
+using Core.Application.ApplicationSession.States;
+using Core.Application.Localization;
+using Unity.Bootstrap.GameInitializer.InitializeSteps;
+using Unity.Infrastructure.ResourceManager;
+using Unity.Infrastructure.Scenes;
+using Unity.Infrastructure.Windows;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Installers
+namespace Unity.Bootstrap.Installers
 {
    internal class ProjectInstaller : MonoInstaller
    {
@@ -41,7 +41,7 @@ namespace Common.Installers
          Container.Bind<InitState>().AsTransient();
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
-         Container.BindInterfacesAndSelfTo<Session.ApplicationSession>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<ApplicationSession>().AsSingle().NonLazy();
       }
 
       private static void InitializeAddressables()

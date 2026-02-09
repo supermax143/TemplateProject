@@ -1,13 +1,13 @@
-﻿using System;
-using Common.Scenes;
+﻿using Core.Domain.Services;
+using Shared.Constants;
 using Zenject;
 
-namespace Common.Session.States
+namespace Core.Application.ApplicationSession.States
 {
    internal class InitState : SessionStateBase
    {
       [Inject] private IScenesLoader _scenesLoader;
-      [Inject] private GameInitializer.GameInitializer _gameInitializer;
+      [Inject] private IGameInitializer _gameInitializer;
       
       protected override async void OnStateEnter()
       {

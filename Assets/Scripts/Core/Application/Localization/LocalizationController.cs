@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Common.ResourceManager;
+using Core.Domain.Services;
+using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
 
-namespace Common.Localization
+namespace Core.Application.Localization
 {
     internal class LocalizationController : ILocalization
     {

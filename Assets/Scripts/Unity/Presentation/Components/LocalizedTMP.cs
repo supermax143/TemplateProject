@@ -1,9 +1,9 @@
-using Common.Localization;
+using Core.Domain.Services;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace View.Helpers
+namespace Unity.Presentation.Components
 {
     [RequireComponent(typeof(TMP_Text))]
     public class LocalizedTMP : MonoBehaviour

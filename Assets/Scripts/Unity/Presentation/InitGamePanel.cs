@@ -1,11 +1,10 @@
-using Common.GameInitializer;
-using Common.Localization;
+using Core.Domain.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace View
+namespace Unity.Presentation
 {
     public class InitGamePanel : MonoBehaviour
     {

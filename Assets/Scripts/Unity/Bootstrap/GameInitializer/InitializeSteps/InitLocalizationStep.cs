@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Common.Localization;
+using Core.Application.Localization;
 using Zenject;
 
-namespace Common.GameInitializer.States
+namespace Unity.Bootstrap.GameInitializer.InitializeSteps
 {
    internal class InitLocalizationStep : InitializeStepBase
    {

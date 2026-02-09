@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Common.ResourceManager
+namespace Unity.Infrastructure.ResourceManager
 {
     public static class AsyncOpHandleExtension
     {

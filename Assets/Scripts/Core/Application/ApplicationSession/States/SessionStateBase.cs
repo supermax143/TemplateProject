@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using Core.Domain.Services.ApplicationSession;
 using Zenject;
 
-namespace Common.Session.States
+namespace Core.Application.ApplicationSession.States
 {
    internal abstract class SessionStateBase : ISessionStateInternal
    {

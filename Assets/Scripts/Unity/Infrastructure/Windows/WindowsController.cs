@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Common.ResourceManager;
+using Core.Domain.Services.Windows;
 using Cysharp.Threading.Tasks;
+using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
 using Zenject;
 
-namespace Common.Windows
+namespace Unity.Infrastructure.Windows
 {
 	/// <summary>
 	///     Менеджер для управления window'ами.

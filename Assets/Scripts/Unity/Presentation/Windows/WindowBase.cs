@@ -1,13 +1,10 @@
 using System;
-using Common.Windows;
+using Core.Domain.Services.Windows;
 using UnityEngine;
 
-namespace View.Windows
+namespace Unity.Presentation.Windows
 {
-	/// <summary>
-	///     Базовый класс для window'ов, реализующий интерфейс IWindow.
-	///     Наследуйте от этого класса для создания собственных окон
-	/// </summary>
+
 	public abstract class WindowBase : MonoBehaviour, IWindow
 	{
 		[SerializeField] private GameObject windowRoot;

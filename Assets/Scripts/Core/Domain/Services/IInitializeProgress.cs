@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.GameInitializer
+namespace Core.Domain.Services
 {
    public interface IInitializeProgress
    {

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Common.GameInitializer.States;
-using Common.Localization;
+using Core.Application.Localization;
+using Core.Domain.Services;
+using Unity.Bootstrap.GameInitializer.InitializeSteps;
 using Zenject;
 
-namespace Common.GameInitializer
+namespace Unity.Bootstrap.GameInitializer
 {
-   internal class GameInitializer : IInitializeProgress
+   internal class GameInitializer : IInitializeProgress, IGameInitializer
    {
       [Inject] private LocalizationController _localizationController;
       [Inject] private DiContainer _container;

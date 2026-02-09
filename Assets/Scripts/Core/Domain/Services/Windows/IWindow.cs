@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Common.Windows
+namespace Core.Domain.Services.Windows
 {
 
 	public interface IWindow

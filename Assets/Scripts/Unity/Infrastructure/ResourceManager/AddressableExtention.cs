@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace Common.ResourceManager
+namespace Unity.Infrastructure.ResourceManager
 {
     public static class AddressableExtention
     {

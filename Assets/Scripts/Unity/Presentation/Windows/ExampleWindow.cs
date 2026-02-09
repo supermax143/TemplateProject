@@ -1,6 +1,6 @@
-using Common.Windows;
+using Unity.Infrastructure.Windows;
 
-namespace View.Windows
+namespace Unity.Presentation.Windows
 {
 	[Window(nameof(ExampleWindow))]
 	public class ExampleWindow : WindowBase

@@ -1,9 +1,9 @@
 ﻿using System;
-using Common.Session.States;
-using UnityEngine;
+using Core.Application.ApplicationSession.States;
+using Core.Domain.Services.ApplicationSession;
 using Zenject;
 
-namespace Common.Session
+namespace Core.Application.ApplicationSession
 {
    internal class ApplicationSession : IApplicationSession, IInitializable
    {

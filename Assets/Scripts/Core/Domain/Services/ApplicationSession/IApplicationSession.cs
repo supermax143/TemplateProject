@@ -1,6 +1,4 @@
-﻿using Common.Session.States;
-
-namespace Common.Session
+﻿namespace Core.Domain.Services.ApplicationSession
 {
    public interface IApplicationSession
    {

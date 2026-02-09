@@ -1,7 +1,7 @@
-﻿using Common.Scenes;
+﻿using Core.Domain.Services;
 using Zenject;
 
-namespace Common.Session.States
+namespace Core.Application.ApplicationSession.States
 {
    internal class MainMenuState : SessionStateBase
    {

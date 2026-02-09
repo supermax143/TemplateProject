@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Common.Localization
+namespace Core.Domain.Services
 {
    public interface ILocalization
    {

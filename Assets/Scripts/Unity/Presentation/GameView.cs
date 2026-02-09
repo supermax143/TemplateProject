@@ -1,10 +1,9 @@
-﻿using Common.Windows;
-using Cysharp.Threading.Tasks;
+﻿using Core.Domain.Services.Windows;
+using Unity.Presentation.Windows;
 using UnityEngine;
-using View.Windows;
 using Zenject;
 
-namespace View
+namespace Unity.Presentation
 {
     public class GameView : MonoBehaviour
     {

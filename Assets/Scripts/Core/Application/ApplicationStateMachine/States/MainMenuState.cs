@@ -15,7 +15,7 @@ namespace Core.Application.ApplicationSession.States
 
       public override void StartGame() 
       {
-         ApplicationSession.ChangeState<GameState>();
+         ApplicationStateMachine.ChangeState<GameState>();
       }
 
    }

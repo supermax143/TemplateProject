@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Core.Application.ApplicationSession
 {
-   internal class ApplicationSession : IApplicationSession, IInitializable
+   internal class ApplicationStateMachine : IApplicationSession, IInitializable
    {
 
       public event Action<ISessionState> OnStateChanged;

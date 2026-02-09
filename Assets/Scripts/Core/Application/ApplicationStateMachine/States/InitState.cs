@@ -16,7 +16,7 @@ namespace Core.Application.ApplicationSession.States
             await _scenesLoader.LoadInitGameScene();
          }
          await _gameInitializer.Start();
-         ApplicationSession.ChangeState<MainMenuState>();
+         ApplicationStateMachine.ChangeState<MainMenuState>();
       }
       
    }

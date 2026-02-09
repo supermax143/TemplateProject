@@ -1,5 +1,6 @@
 ﻿using Core.Application.ApplicationSession.States;
 using Core.Application.Localization;
+using Core.Application.ServerCommands;
 using Zenject;
 
 namespace Core.Application.Installers
@@ -15,7 +16,11 @@ namespace Core.Application.Installers
          Container.Bind<InitState>().AsTransient();
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
-         Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationSession>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationStateMachine>().AsSingle().NonLazy();
+         
+         //Server Commands
+         Container.Bind<LoginUserCommand>().AsTransient();
+         
       }
    }
 }

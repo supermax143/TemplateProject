@@ -6,7 +6,7 @@ namespace Core.Application.ApplicationSession.States
    internal abstract class SessionStateBase : ISessionStateInternal
    {
       
-      [Inject] protected ApplicationSession ApplicationSession;
+      [Inject] protected ApplicationStateMachine ApplicationStateMachine;
 
       public void Enter()
       {

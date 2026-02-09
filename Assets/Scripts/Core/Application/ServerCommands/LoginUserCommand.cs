@@ -12,11 +12,8 @@ namespace Core.Application.ServerCommands
         
         public async Task Execute()
         {
-            var user = new UserModel()
-            {
-                UserId = 123,
-                UserName = "TestUser"
-            };
+            var user = new UserModel(12345, "PlayerOne");
+            
             _mainModel.SetUser(user);
             await Task.Delay(1000);
         }

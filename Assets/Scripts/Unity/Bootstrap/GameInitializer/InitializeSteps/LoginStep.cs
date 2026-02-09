@@ -6,7 +6,8 @@ namespace Unity.Bootstrap.GameInitializer.InitializeSteps
 {
    internal class LoginStep : InitializeStepBase
    {
-      private DiContainer _container;
+      [Inject] private DiContainer _container;
+      
       public override string Ident => "login_state";
       
       public override async Task Execute()

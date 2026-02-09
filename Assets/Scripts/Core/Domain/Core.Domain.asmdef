@@ -2,7 +2,8 @@
     "name": "Core.Domain",
     "rootNamespace": "",
     "references": [
-        "UniTask"
+        "UniTask",
+        "Shared"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

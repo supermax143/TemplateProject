@@ -1,5 +1,6 @@
 ﻿using Core.Application.ApplicationSession.States;
 using Core.Application.Localization;
+using Core.Application.Models;
 using Core.Application.ServerCommands;
 using Zenject;
 
@@ -18,8 +19,12 @@ namespace Core.Application.Installers
          Container.Bind<GameState>().AsTransient();
          Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationStateMachine>().AsSingle().NonLazy();
          
+         
          //Server Commands
          Container.Bind<LoginUserCommand>().AsTransient();
+         
+         //Models
+         Container.BindInterfacesAndSelfTo<MainModel>().AsTransient();
          
       }
    }

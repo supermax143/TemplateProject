@@ -2,7 +2,7 @@
 
 namespace Core.Domain.Services
 {
-   internal interface IGameInitializer
+   public interface IGameInitializer
    {
       Task Start();
    }

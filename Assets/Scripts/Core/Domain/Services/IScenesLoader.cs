@@ -2,7 +2,7 @@
 
 namespace Core.Domain.Services
 {
-   internal interface IScenesLoader
+   public interface IScenesLoader
    {
       Task  LoadInitGameScene();
       Task  LoadMainMenuScene();

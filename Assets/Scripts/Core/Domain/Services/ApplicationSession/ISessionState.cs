@@ -4,12 +4,5 @@
    {
       void StartGame();
    }
-   
-   internal interface ISessionStateInternal : ISessionState
-   {
-      void Enter();
-      void Exit();
-   }
-   
 }
 

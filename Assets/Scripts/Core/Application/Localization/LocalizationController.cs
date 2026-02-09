@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using Core.Domain.Services;
 using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Application.Localization
 {
     internal class LocalizationController : ILocalization
     {
 
+        [Inject] private IResourceManager _resourceManager;
+        
         public event Action<string> LanguageChanged;
 
         private const string LOCALIZATION_KEY = "Localization";
@@ -28,7 +31,7 @@ namespace Core.Application.Localization
         private Dictionary<string, Dictionary<string, string>> _allLanguages;
         public async Task Initialize()
         {
-            var localizationText = await AddressableExtention.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
+            var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
             Initialize(localizationText?.text);
         }
 

@@ -10,7 +10,6 @@ namespace Unity.Bootstrap.GameInitializer
 {
    internal class GameInitializer : IInitializeProgress, IGameInitializer
    {
-      [Inject] private LocalizationController _localizationController;
       [Inject] private DiContainer _container;
     
       public event Action OnInitStepStarted;

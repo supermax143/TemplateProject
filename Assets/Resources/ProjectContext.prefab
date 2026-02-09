@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2638617841443220894}
   - component: {fileID: 4218963708455673376}
   - component: {fileID: 2313786603311181199}
+  - component: {fileID: 3856448572725618157}
   - component: {fileID: 4875320979819222349}
   m_Layer: 0
   m_Name: ProjectContext
@@ -54,6 +55,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 2313786603311181199}
+  - {fileID: 3856448572725618157}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -82,6 +84,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _windowsController: {fileID: 4875320979819222349}
+--- !u!114 &3856448572725618157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299838211194370913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f803fd71ae6641ef848512935c66c8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Core.Application::Core.Application.Installers.ApplicationInstaller
 --- !u!114 &4875320979819222349
 MonoBehaviour:
   m_ObjectHideFlags: 0

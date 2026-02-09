@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Core.Application.Localization;
+using Core.Domain.Services;
 using Zenject;
 
 namespace Unity.Bootstrap.GameInitializer.InitializeSteps
@@ -7,7 +8,7 @@ namespace Unity.Bootstrap.GameInitializer.InitializeSteps
    internal class InitLocalizationStep : InitializeStepBase
    {
       
-      [Inject] private LocalizationController _localizationController;
+      [Inject] private ILocalization _localizationController;
       
       public override string Ident => "init_localization";
       

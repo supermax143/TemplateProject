@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.VisualTutorial
 {
-    
-    [CreateAssetMenu(fileName = "Assets/Data/TutorialTasksChain.asset", menuName = "Zombies/TutorialTasksChain", order = 1)]
+    [CreateAssetMenu(fileName = "TasksChain.asset", menuName = "Tutorial/TutorialTasksChain", order = 1)]
     public class TutorialTasksChain : ScriptableObject
     {
         [SerializeField]

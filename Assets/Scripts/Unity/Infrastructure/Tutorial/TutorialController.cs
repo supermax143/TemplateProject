@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
+using Core.Application.Interfaces;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Presentation.Windows;
 using UnityEngine;
@@ -12,7 +13,7 @@ using Zenject;
 
 namespace Unity.Infrastructure.VisualTutorial
 {
-    public class TutorialController : MonoBehaviour, ITutorialOverlayController
+    public class TutorialController : MonoBehaviour, ITutorialOverlayController, IBootstrapStep
     {
         [SerializeField]
         private AssetReference _taskWrapperPrefab;
@@ -36,6 +37,14 @@ namespace Unity.Infrastructure.VisualTutorial
         
         public void ShowOverlay(float alpha = -1) => _overlay.Show(alpha);
         public void HideOverlay() => _overlay.Hide();
+
+        private bool _initialized = false;
+        
+        public async Task Initialize()
+        {
+            await TryStartChains();
+            Debug.Log($"{this.GetType().Name} Initialized");
+        }
         
         public void SetSceneContext(DiContainer context)
         {
@@ -44,7 +53,6 @@ namespace Unity.Infrastructure.VisualTutorial
             {
                 task.Value.SetContext(context);
             }
-            TryStartChains();
         }
 
         private async Task TryStartChains()
@@ -64,7 +72,7 @@ namespace Unity.Infrastructure.VisualTutorial
 
         private async Task TryStartNextTask(TutorialTasksChain chain)
         {
-            if (!IsChainComplete(chain))
+            if (IsChainComplete(chain))
             {
                 return;
             }
@@ -75,7 +83,8 @@ namespace Unity.Infrastructure.VisualTutorial
             }
             
             _activeChains.Add(chain);
-            var task = chain.Tasks[StorageData.GetChainProgress(chain.ID)];
+            var progress = StorageData.GetChainProgress(chain.ID);
+            var task = chain.Tasks[progress];
             await StartTutorialTask(task);
             
         }
@@ -83,7 +92,7 @@ namespace Unity.Infrastructure.VisualTutorial
 
         private bool IsChainComplete(TutorialTasksChain chain)
         {
-            return StorageData.GetChainProgress(chain.ID) < chain.Tasks.Count; 
+            return StorageData.GetChainProgress(chain.ID) >= chain.Tasks.Count; 
         }
         
         private async Task StartTutorialTask(TutorialTask task)
@@ -119,7 +128,6 @@ namespace Unity.Infrastructure.VisualTutorial
             Destroy(taskWrapper.gameObject);
             TryStartNextTask(chain);
         }
-
        
     }
 }

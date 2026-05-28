@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Core.Application.DataStorage;
 using Core.Application.Interfaces;
 using Unity.Infrastructure.Localization;
+using Unity.Infrastructure.VisualTutorial;
 using Zenject;
 
 namespace Unity.Bootstrap
@@ -12,7 +13,8 @@ namespace Unity.Bootstrap
    {
       [Inject] private LocalizationController _localization;
       [Inject] private IDataStorage _dataStorage;
-    
+      [Inject] private TutorialController _tutorialController;
+      
       public event Action OnStepStarted;
       public event Action OnInitializationComplete;
 
@@ -48,6 +50,7 @@ namespace Unity.Bootstrap
       {
            _steps.Enqueue(new BootstrapStepWrapper(_localization, "init_localization"));
            _steps.Enqueue(new BootstrapStepWrapper(_dataStorage, "init_data_storage"));
+           _steps.Enqueue(new BootstrapStepWrapper(_tutorialController, "init_tutorial"));
       }
       
       

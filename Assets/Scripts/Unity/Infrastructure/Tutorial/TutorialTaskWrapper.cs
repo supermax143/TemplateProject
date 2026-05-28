@@ -57,6 +57,7 @@ namespace Unity.Infrastructure.VisualTutorial
                     Debug.LogError("unknown graph type");
                     break;
             }
+            SetContext(_curContext);
             Debug.Log($"Tutorial Task started: {_graph.name}");
         }
 

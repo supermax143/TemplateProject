@@ -4,6 +4,7 @@ using System.Linq;
 using Core.Application.Interfaces.Windows;
 using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.ResourceManager;
+using Unity.Presentation.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +18,11 @@ namespace Unity.Infrastructure.Windows
 	internal class WindowsController : MonoBehaviour, IWindowsMemberHolder, IWindowsController
     {
 
-        [SerializeField] private Transform _windowsParent;
-
+        [SerializeField] 
+        private Transform _windowsParent;
+        [SerializeField]
+        private WindowsBackground _background;
+        
         [Inject] private readonly DiContainer _diContainer;
         private readonly List<string> _loadingWindows = new();
 
@@ -53,6 +57,7 @@ namespace Unity.Infrastructure.Windows
 
             if (isWindowsListEmpty && !_loadingWindows.Any())
             {
+                _background.Hide();
                 OnLastWindowClosed?.Invoke();
             }
             
@@ -91,6 +96,7 @@ namespace Unity.Infrastructure.Windows
                     return null;
                 }
                 
+                _background.Show();
                 return InitializeInstance(windowPrefab, windowName);
             }
             catch (Exception ex)

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Core.Application.Interfaces;
 
-namespace Unity.Bootstrap.GameInitializer
+namespace Unity.Bootstrap
 {
     public class BootstrapStepWrapper
     {

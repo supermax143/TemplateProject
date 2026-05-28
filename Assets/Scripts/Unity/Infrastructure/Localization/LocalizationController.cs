@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
-using Core.Domain.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Core.Application.Localization
+namespace Unity.Infrastructure.Localization
 {
     internal class LocalizationController : ILocalization, IBootstrapStep
     {

@@ -1,4 +1,4 @@
-﻿namespace Utils.Time
+﻿namespace Unity.Utils.Time
 {
     public enum TimeType
     {

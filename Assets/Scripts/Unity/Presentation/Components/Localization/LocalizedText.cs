@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Unity.Presentation.Components
+namespace Unity.Presentation.Components.Localization
 {
     [RequireComponent(typeof(Text))]
     public class LocalizedText : LocalizedTextBase

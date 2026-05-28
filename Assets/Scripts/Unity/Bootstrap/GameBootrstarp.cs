@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Application.DataStorage;
 using Core.Application.Interfaces;
-using Core.Application.Localization;
-using Core.Domain.Services;
+using Unity.Infrastructure.Localization;
 using Zenject;
 
-namespace Unity.Bootstrap.GameInitializer
+namespace Unity.Bootstrap
 {
    internal class GameBootrstarp : IBootstrapProgress, IGameBootstrap
    {

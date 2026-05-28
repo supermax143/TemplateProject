@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utils.Time
+namespace Unity.Utils.Time
 {
     public class Timer
     {

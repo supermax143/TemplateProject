@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
+using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.UI;
-using Utils.Time;
 
 namespace Unity.Presentation.Windows
 {
-    public class WindowsBackground : MonoBehaviour
+    public class OverlayComponent : MonoBehaviour
     {
         
         [SerializeField]
@@ -24,14 +24,15 @@ namespace Unity.Presentation.Windows
             _image = GetComponent<Image>();
         }
 
-        public void Show()
+        public void Show(float targetAlpha = -1)
         {
+            var alpha = targetAlpha >= 0 ? targetAlpha : _maxAlpha; 
             gameObject.SetActive(true);
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
             }
-            _coroutine = StartCoroutine(Animate(_maxAlpha));
+            _coroutine = StartCoroutine(Animate(alpha));
         }
         public void Hide()
         {

@@ -846,8 +846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86852ad60a09fa4a867818b6b9c8a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.View.Helpers.LocalizedTMP
-  _textField: {fileID: 326330610}
   _key: main_menu_title
+  _textField: {fileID: 326330610}
 --- !u!1 &436286326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,8 +1666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86852ad60a09fa4a867818b6b9c8a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.View.Helpers.LocalizedTMP
-  _textField: {fileID: 1073616069}
   _key: main_menu_button_start
+  _textField: {fileID: 1073616069}
 --- !u!1 &1162655025
 GameObject:
   m_ObjectHideFlags: 0

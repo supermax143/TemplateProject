@@ -16,7 +16,7 @@ namespace Core.Application.DataStorage.StorageItems
         //public bool HasPurchases => Purchases.Sum(p => p.Value) > 0;
     }
 
-    internal class PurchasesStorageData
+    public class PurchasesStorageData
     {
         private const string PURCHASES_KEY = "Purchases";
         

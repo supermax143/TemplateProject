@@ -10,18 +10,14 @@ using Zenject;
 
 namespace Unity.Infrastructure.Windows
 {
-	/// <summary>
-	///     Менеджер для управления window'ами.
-	///     Обеспечивает, что единовременно может быть открыт только один window.
-	///     Window'ы могут находиться на разных сценах.
-	/// </summary>
+	
 	internal class WindowsController : MonoBehaviour, IWindowsMemberHolder, IWindowsController
     {
 
         [SerializeField] 
         private Transform _windowsParent;
         [SerializeField]
-        private WindowsBackground _background;
+        private OverlayComponent _background;
         
         [Inject] private readonly DiContainer _diContainer;
         private readonly List<string> _loadingWindows = new();

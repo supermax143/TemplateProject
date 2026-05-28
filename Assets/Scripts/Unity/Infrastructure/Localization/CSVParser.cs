@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-namespace Core.Application.Localization
+namespace Unity.Infrastructure.Localization
 {
    public class CSVParser
    {

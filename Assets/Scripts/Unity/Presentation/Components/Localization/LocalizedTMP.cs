@@ -1,10 +1,7 @@
-using Core.Application.Interfaces;
-using Core.Domain.Services;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
-namespace Unity.Presentation.Components
+namespace Unity.Presentation.Components.Localization
 {
     [RequireComponent(typeof(TMP_Text))]
     public class LocalizedTMP : LocalizedTextBase

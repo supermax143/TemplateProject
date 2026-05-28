@@ -1,9 +1,8 @@
 ﻿using Core.Application.Interfaces;
-using Core.Domain.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Unity.Presentation.Components
+namespace Unity.Presentation.Components.Localization
 {
     public abstract class LocalizedTextBase : MonoBehaviour 
     {

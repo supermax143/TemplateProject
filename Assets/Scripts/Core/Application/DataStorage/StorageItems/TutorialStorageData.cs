@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.Application.DataStorage.StorageItems
 {
-    internal class TutorialStorageData
+    public class TutorialStorageData
     {
         private const string TUTORIAL_DATA_KEY = "TutorialData";
         

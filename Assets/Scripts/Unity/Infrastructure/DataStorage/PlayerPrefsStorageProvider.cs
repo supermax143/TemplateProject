@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
+using Core.Application.DataStorage;
 using UnityEngine;
 
-namespace Core.Application.DataStorage
+namespace Unity.Infrastructure.DataStorage
 {
     /// <summary>
     /// Implementation of IStorageProvider using Unity's PlayerPrefs.

@@ -1,27 +1,26 @@
-using Core.Application.ApplicationSession;
-using Core.Application.ApplicationSession.States;
 using Core.Application.DataStorage;
-using Core.Application.Localization;
-using Unity.Bootstrap.GameInitializer;
+using Unity.Bootstrap;
+using Unity.Infrastructure.DataStorage;
+using Unity.Infrastructure.GameEvents;
+using Unity.Infrastructure.Localization;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
+using Unity.Infrastructure.VisualTutorial;
 using Unity.Infrastructure.Windows;
 using UnityEngine;
 using Zenject;
 
-namespace Unity.Bootstrap.Installers
+namespace Unity.Installers
 {
    internal class UnityInstaller : MonoInstaller
    {
 
-      [SerializeField, HideInInspector]
+      [SerializeField]
       private WindowsController _windowsController;
+      [SerializeField]
+      private TutorialController _tutorialController;
       
-      
-      private void OnValidate()
-      {
-         _windowsController = GetComponent<WindowsController>();
-      }
+     
 
 
       public override void InstallBindings()
@@ -33,9 +32,14 @@ namespace Unity.Bootstrap.Installers
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
          Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();
          Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameEventsBus>().AsSingle();
+         
          //Data Storage
          Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
          Container.Bind<IGlobalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
+         
+         //Tutorial
+         Container.BindInterfacesAndSelfTo<TutorialController>().FromInstance(_tutorialController);
       }
 
       private static void InitializeAddressables()

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Unity.Infrastructure.ResourceManager
+namespace Core.Application.Interfaces
 {
    public interface IResourceManager
    {

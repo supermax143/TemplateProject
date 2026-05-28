@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Core.Domain.Services
+namespace Core.Application.Interfaces
 {
-   public interface ILocalization
+   public interface ILocalization: IBootstrapStep
    {
-     
-
       event Action<string> LanguageChanged;
       string Get(string key);
       bool Initialized { get; }
@@ -15,6 +12,6 @@ namespace Core.Domain.Services
       List<string> LanguageCodes { get; }
       void SetLanguage(string languageCode);
       bool TryGetLanguageCodes(out IEnumerable<string> codes);
-      Task Initialize();
+
    }
 }

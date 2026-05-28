@@ -1,3 +1,4 @@
+using Core.Application.Interfaces;
 using Core.Domain.Services;
 using TMPro;
 using UnityEngine;
@@ -14,30 +15,30 @@ namespace Unity.Presentation
         [SerializeField]
         private Scrollbar _scrollbar;
     
-        [Inject] IInitializeProgress _initializeProgress;
+        [Inject] IBootstrapProgress _bootstrapProgress;
         [Inject] ILocalization _localization;
     
         void Start()
         {
-            _initializeProgress.OnInitStepStarted += UpdateView;
-            _initializeProgress.OnInitializationComplete += UpdateView;
+            _bootstrapProgress.OnStepStarted += UpdateView;
+            _bootstrapProgress.OnInitializationComplete += UpdateView;
             UpdateView();
         }
 
         private void UpdateView()
         {
-            _scrollbar.size = _initializeProgress.Progress;
+            _scrollbar.size = _bootstrapProgress.Progress;
             if (_localization.Initialized)
             {
-                _textField.text = _localization.Get(_initializeProgress.CurStepIdent);
+                _textField.text = _localization.Get(_bootstrapProgress.CurStepIdent);
             }
         }
 
 
         private void OnDestroy()
         {
-            _initializeProgress.OnInitStepStarted -= UpdateView;
-            _initializeProgress.OnInitializationComplete -= UpdateView;
+            _bootstrapProgress.OnStepStarted -= UpdateView;
+            _bootstrapProgress.OnInitializationComplete -= UpdateView;
         }
     }
 }

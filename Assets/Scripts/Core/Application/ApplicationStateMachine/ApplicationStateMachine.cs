@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Application.ApplicationSession.States;
+using Core.Application.Interfaces.ApplicationSession;
 using Core.Domain.Services.ApplicationSession;
 using Zenject;
 
@@ -18,7 +19,7 @@ namespace Core.Application.ApplicationSession
 
       public void Initialize()
       {
-         ChangeState<InitState>();
+         ChangeState<BootstrapState>();
       }
 
       internal void ChangeState<TState>() where TState : ISessionStateInternal

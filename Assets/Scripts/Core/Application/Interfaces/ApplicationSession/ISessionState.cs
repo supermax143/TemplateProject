@@ -1,4 +1,4 @@
-﻿namespace Core.Domain.Services.ApplicationSession
+﻿namespace Core.Application.Interfaces.ApplicationSession
 {
    public interface ISessionState
    {

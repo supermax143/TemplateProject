@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Application.Interfaces;
 using Core.Domain.Services;
-using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
 using Zenject;
 

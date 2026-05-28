@@ -1,7 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 
-namespace Core.Domain.Services.Windows
+namespace Core.Application.Interfaces.Windows
 {
    public interface IWindowsController
    {

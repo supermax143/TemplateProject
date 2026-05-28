@@ -1,5 +1,5 @@
 using System;
-using Core.Domain.Services.Windows;
+using Core.Application.Interfaces.Windows;
 using UnityEngine;
 
 namespace Unity.Presentation.Windows

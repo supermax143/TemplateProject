@@ -1,7 +1,6 @@
 using Core.Application.ApplicationSession;
 using Core.Application.ApplicationSession.States;
 using Core.Application.Localization;
-using Unity.Bootstrap.GameInitializer.InitializeSteps;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
 using Unity.Infrastructure.Windows;
@@ -29,13 +28,9 @@ namespace Unity.Bootstrap.Installers
 
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
-         Container.BindInterfacesAndSelfTo<GameInitializer.GameInitializer>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameInitializer.GameBootrstarp>().AsSingle();
          Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
          
-         //Initialization
-         Container.Bind<InitializeStepBase>().To<InitLocalizationStep>().AsTransient();
-         Container.Bind<InitializeStepBase>().To<LoginStep>().AsTransient();
-         Container.Bind<InitializeStepBase>().To<LoadAssetsStep>().AsTransient();
       }
 
       private static void InitializeAddressables()

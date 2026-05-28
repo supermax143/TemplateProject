@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Core.Domain.Services
+namespace Core.Application.Interfaces
 {
-   public interface IInitializeProgress
+   public interface IBootstrapProgress
    {
       event Action OnInitializationComplete;
       string CurStepIdent { get; }
       float Progress { get; }
-      event Action OnInitStepStarted;
+      event Action OnStepStarted;
    }
 }

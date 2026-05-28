@@ -1,4 +1,6 @@
-﻿namespace Core.Domain.Services.ApplicationSession
+﻿using Core.Application.Interfaces.ApplicationSession;
+
+namespace Core.Domain.Services.ApplicationSession
 {
    internal interface ISessionStateInternal : ISessionState
    {

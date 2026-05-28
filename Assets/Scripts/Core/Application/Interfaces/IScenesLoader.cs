@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Core.Domain.Services
+namespace Core.Application.Interfaces
 {
    public interface IScenesLoader
    {

@@ -4,7 +4,9 @@
     "references": [
         "Core.Domain",
         "Shared",
+        "UniTask",
         "Zenject"
+        
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

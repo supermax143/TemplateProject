@@ -1,4 +1,5 @@
-﻿using Core.Domain.Services;
+﻿using Core.Application.Interfaces;
+using Core.Domain.Services;
 using Zenject;
 
 namespace Core.Application.ApplicationSession.States

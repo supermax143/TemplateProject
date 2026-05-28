@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Core.Application.Interfaces;
 using UnityEngine;
 
 namespace Unity.Infrastructure.ResourceManager

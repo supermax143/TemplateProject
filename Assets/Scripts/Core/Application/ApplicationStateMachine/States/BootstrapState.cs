@@ -1,13 +1,14 @@
-﻿using Core.Domain.Services;
+﻿using Core.Application.Interfaces;
+using Core.Domain.Services;
 using Shared.Constants;
 using Zenject;
 
 namespace Core.Application.ApplicationSession.States
 {
-   internal class InitState : SessionStateBase
+   internal class BootstrapState : SessionStateBase
    {
       [Inject] private IScenesLoader _scenesLoader;
-      [Inject] private IGameInitializer _gameInitializer;
+      [Inject] private IGameBootstrap _gameBootstrap;
       
       protected override async void OnStateEnter()
       {
@@ -15,7 +16,7 @@ namespace Core.Application.ApplicationSession.States
          {
             await _scenesLoader.LoadInitGameScene();
          }
-         await _gameInitializer.Start();
+         await _gameBootstrap.Initialize();
          ApplicationStateMachine.ChangeState<MainMenuState>();
       }
       

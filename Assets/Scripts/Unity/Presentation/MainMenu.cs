@@ -1,4 +1,6 @@
 using System.Linq;
+using Core.Application.Interfaces;
+using Core.Application.Interfaces.ApplicationSession;
 using Core.Domain.Services;
 using Core.Domain.Services.ApplicationSession;
 using TMPro;

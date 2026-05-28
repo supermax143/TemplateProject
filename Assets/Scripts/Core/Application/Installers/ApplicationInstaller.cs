@@ -9,11 +9,14 @@ namespace Core.Application.Installers
       public override void InstallBindings()
       {
          
+         //Data storage
+         Container.BindInterfacesAndSelfTo<DataStorage.DataStorage>().AsSingle().NonLazy();
+         
          // Session
          Container.Bind<BootstrapState>().AsTransient();
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
-         Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationStateMachine>().AsSingle().NonLazy();
+         Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationStateMachine>().AsSingle();
          
          
          //Models

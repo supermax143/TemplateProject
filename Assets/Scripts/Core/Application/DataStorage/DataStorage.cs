@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Core.Application.DataStorage.StorageItems;
 using UnityEngine;
 using Zenject;
@@ -11,7 +12,7 @@ namespace Core.Application.DataStorage
     /// Uses typed storage variables with configurable storage providers for type-safe data access.
     /// Maintains backward compatibility with existing PlayerPrefs-based data.
     /// </summary>
-    internal class DataStorage : IDataStorage
+    internal class DataStorage : IDataStorage 
     {
        
         /// <summary>
@@ -34,12 +35,13 @@ namespace Core.Application.DataStorage
         public PurchasesStorageData Purchases => _purchasesStorageData;
         
        
-        public void Initialize()
+        public Task Initialize()
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
             _userStorageData = new UserStorageData(_globalStorageProvider);
             
             Debug.Log($"{this.GetType().Name} Initialized");
+            return Task.CompletedTask;
         }
 
 
@@ -71,7 +73,6 @@ namespace Core.Application.DataStorage
         {
             get { return _userStorageData.Money; }
         }
-
         
         public void AddPurchase(string id)
         {
@@ -88,9 +89,5 @@ namespace Core.Application.DataStorage
             return _purchasesStorageData.GetPurchase(id);
         }
 
-    }
-
-    public interface IDataStorage
-    {
     }
 }

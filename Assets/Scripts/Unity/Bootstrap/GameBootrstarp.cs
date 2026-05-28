@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Application.DataStorage;
 using Core.Application.Interfaces;
 using Core.Application.Localization;
 using Core.Domain.Services;
@@ -11,6 +12,7 @@ namespace Unity.Bootstrap.GameInitializer
    internal class GameBootrstarp : IBootstrapProgress, IGameBootstrap
    {
       [Inject] private LocalizationController _localization;
+      [Inject] private IDataStorage _dataStorage;
     
       public event Action OnStepStarted;
       public event Action OnInitializationComplete;
@@ -26,15 +28,17 @@ namespace Unity.Bootstrap.GameInitializer
       public async Task Initialize()
       {
          AddSteps();
-         
-         for (int i = 0; i < _steps.Count; i++)
+
+         int index = 1;
+         while (_steps.Count > 0)
          {
             var step = _steps.Dequeue();
             CurStepIdent = step.StepIdent;
             OnStepStarted?.Invoke();
             await step.Execute();
-            Progress = (float)(i+1) / _steps.Count;
-            await Task.Delay(1000);
+            Progress = (float)index / _steps.Count;
+            index++;
+            await Task.Delay(500);
          }
          
          OnInitializationComplete?.Invoke();
@@ -44,6 +48,7 @@ namespace Unity.Bootstrap.GameInitializer
       private void AddSteps()
       {
            _steps.Enqueue(new BootstrapStepWrapper(_localization, "init_localization"));
+           _steps.Enqueue(new BootstrapStepWrapper(_dataStorage, "init_data_storage"));
       }
       
       

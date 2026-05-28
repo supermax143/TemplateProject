@@ -7,7 +7,7 @@ namespace Core.Application.DataStorage
     /// Implementation of IStorageProvider using Unity's PlayerPrefs.
     /// Provides persistent storage using Unity's built-in preference system.
     /// </summary>
-    public class PlayerPrefsStorageProvider : ILocalStorageProvider
+    public class PlayerPrefsStorageProvider : ILocalStorageProvider, IGlobalStorageProvider
     {
         /// <summary>
         /// Retrieves a value of type T associated with the specified key.

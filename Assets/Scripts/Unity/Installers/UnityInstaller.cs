@@ -1,5 +1,6 @@
 using Core.Application.ApplicationSession;
 using Core.Application.ApplicationSession.States;
+using Core.Application.DataStorage;
 using Core.Application.Localization;
 using Unity.Bootstrap.GameInitializer;
 using Unity.Infrastructure.ResourceManager;
@@ -32,7 +33,9 @@ namespace Unity.Bootstrap.Installers
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
          Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();
          Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
-         
+         //Data Storage
+         Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
+         Container.Bind<IGlobalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
       }
 
       private static void InitializeAddressables()

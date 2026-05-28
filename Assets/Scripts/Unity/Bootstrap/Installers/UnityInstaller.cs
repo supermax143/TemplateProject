@@ -1,6 +1,7 @@
 using Core.Application.ApplicationSession;
 using Core.Application.ApplicationSession.States;
 using Core.Application.Localization;
+using Unity.Bootstrap.GameInitializer;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
 using Unity.Infrastructure.Windows;
@@ -28,7 +29,7 @@ namespace Unity.Bootstrap.Installers
 
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
-         Container.BindInterfacesAndSelfTo<GameInitializer.GameBootrstarp>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();
          Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
          
       }

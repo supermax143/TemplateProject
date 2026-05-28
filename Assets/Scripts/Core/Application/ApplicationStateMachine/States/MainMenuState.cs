@@ -1,5 +1,6 @@
 ﻿using Core.Application.Interfaces;
 using Core.Domain.Services;
+using Shared.Constants;
 using Zenject;
 
 namespace Core.Application.ApplicationSession.States
@@ -11,6 +12,11 @@ namespace Core.Application.ApplicationSession.States
       
       protected override void OnStateEnter()
       {
+         if (_scenesLoader.CurScene == SceneNames.MainMenuScene)
+         {
+            return;
+         }
+         
          _scenesLoader.LoadMainMenuScene();
       }
 

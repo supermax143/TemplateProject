@@ -25,8 +25,6 @@ namespace Unity.Infrastructure.Windows
 
         private readonly List<WindowsListMember> _windowsList = new();
 
-        
-
         public event Action<string> OnWindowStartLoading;
         public event Action OnActiveWindowChanged;
         public event Action OnWindowLoadComplete;
@@ -128,11 +126,7 @@ namespace Unity.Infrastructure.Windows
         private void ShowWindowInternal(WindowsListMember member)
         {
             OnActiveWindowChanged?.Invoke();
-
-            var animator = member.GetComponent<Animator>();
-            if (animator != null)
-                animator.Update(0);
-
+            
             var rectTransform = member.GetComponent<RectTransform>();
             rectTransform.SetParent(_windowsParent, false);
         }

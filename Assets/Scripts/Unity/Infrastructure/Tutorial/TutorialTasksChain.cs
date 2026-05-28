@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.Infrastructure.VisualTutorial
+namespace Unity.Infrastructure.Tutorial
 {
     [CreateAssetMenu(fileName = "TasksChain.asset", menuName = "Tutorial/TutorialTasksChain", order = 1)]
     public class TutorialTasksChain : ScriptableObject

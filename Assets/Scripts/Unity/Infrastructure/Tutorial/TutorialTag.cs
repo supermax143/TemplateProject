@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.Infrastructure.VisualTutorial
+namespace Unity.Infrastructure.Tutorial
 {
     public class TutorialTag : MonoBehaviour
     {

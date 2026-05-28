@@ -5,13 +5,12 @@ using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces;
 using Unity.Infrastructure.ResourceManager;
-using Unity.Presentation.Windows;
+using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Serialization;
 using Zenject;
 
-namespace Unity.Infrastructure.VisualTutorial
+namespace Unity.Infrastructure.Tutorial
 {
     public class TutorialController : MonoBehaviour, ITutorialOverlayController, IBootstrapStep
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 
-namespace Unity.Infrastructure.VisualTutorial.Units
+namespace Unity.Infrastructure.Tutorial.Units
 {
     [UnitCategory("Custom")]
     [UnitTitle("GetGUIElement")]

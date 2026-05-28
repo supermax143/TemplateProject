@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Application.DataStorage;
+using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces;
 using Unity.Infrastructure.Localization;
-using Unity.Infrastructure.VisualTutorial;
+using Unity.Infrastructure.Purchases;
+using Unity.Infrastructure.Tutorial;
 using Zenject;
 
 namespace Unity.Bootstrap
@@ -14,6 +16,7 @@ namespace Unity.Bootstrap
       [Inject] private LocalizationController _localization;
       [Inject] private IDataStorage _dataStorage;
       [Inject] private TutorialController _tutorialController;
+      [Inject] private IPurchasesController _purchasesController;
       
       public event Action OnStepStarted;
       public event Action OnInitializationComplete;
@@ -50,6 +53,7 @@ namespace Unity.Bootstrap
       {
            _steps.Enqueue(new BootstrapStepWrapper(_localization, "init_localization"));
            _steps.Enqueue(new BootstrapStepWrapper(_dataStorage, "init_data_storage"));
+           _steps.Enqueue(new BootstrapStepWrapper(_purchasesController, "init_purchases" ));
            _steps.Enqueue(new BootstrapStepWrapper(_tutorialController, "init_tutorial"));
       }
       

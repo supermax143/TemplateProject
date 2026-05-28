@@ -1,4 +1,4 @@
-namespace Unity.Infrastructure.VisualTutorial
+namespace Unity.Infrastructure.Tutorial
 {
     public interface ITutorialOverlayController
     {

@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using Unity.Infrastructure.VisualTutorial;
-using UnityEngine;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
 using Zenject;
 
-namespace Controllers.VisualTutorial.Units.Popup
+namespace Unity.Infrastructure.Tutorial.Units.Overlay
 {
     [UnitCategory("Custom/Popup")]
     [UnitTitle("HideTutorialOverlay")]

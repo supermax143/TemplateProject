@@ -6,7 +6,7 @@ using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
-namespace Unity.Infrastructure.VisualTutorial
+namespace Unity.Infrastructure.Tutorial
 {
     public class TutorialTaskWrapper : MonoBehaviour
     {

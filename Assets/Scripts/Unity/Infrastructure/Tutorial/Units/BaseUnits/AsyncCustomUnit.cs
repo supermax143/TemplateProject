@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
-namespace Unity.Infrastructure.VisualTutorial.Units.BaseUnits
+namespace Unity.Infrastructure.Tutorial.Units.BaseUnits
 {
     public abstract class AsyncCustomUnit : Unit
     {

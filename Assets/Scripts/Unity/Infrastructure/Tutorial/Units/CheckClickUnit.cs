@@ -1,9 +1,8 @@
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
-using Zenject;
 using UnityEngine;
 
-namespace Controllers.VisualTutorial.Units
+namespace Unity.Infrastructure.Tutorial.Units
 {
     [UnitCategory("Custom/Input")]
     [UnitTitle("CheckClick")]

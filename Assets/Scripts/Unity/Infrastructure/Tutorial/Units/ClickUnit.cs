@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,7 @@ using Zenject;
 using static UnityEngine.UI.Button;
 using Object = UnityEngine.Object;
 
-namespace Unity.Infrastructure.VisualTutorial.Units
+namespace Unity.Infrastructure.Tutorial.Units
 {
     [UnitCategory("Custom")]
     [UnitTitle("Click")]

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Unity.Presentation.Windows
+namespace Unity.Presentation.Components
 {
     public class OverlayComponent : MonoBehaviour
     {

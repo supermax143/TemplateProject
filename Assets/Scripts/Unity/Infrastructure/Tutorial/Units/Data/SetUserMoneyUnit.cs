@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Core.Application.DataStorage;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 using Zenject;
 
-namespace Unity.Infrastructure.VisualTutorial.Units.Data
+namespace Unity.Infrastructure.Tutorial.Units.Data
 {
     [UnitCategory("Custom/Data")]
     [UnitTitle("SetUserMoney")]

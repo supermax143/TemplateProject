@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using Zenject;
 
-namespace Unity.Infrastructure.VisualTutorial.Units.BaseUnits
+namespace Unity.Infrastructure.Tutorial.Units.BaseUnits
 {
     public abstract class CustomGetUnit<TResult> : Unit 
     {

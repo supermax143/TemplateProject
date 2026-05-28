@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Unity.Infrastructure.GameEvents;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
-namespace Unity.Infrastructure.VisualTutorial.Units
+namespace Unity.Infrastructure.Tutorial.Units
 {
     
     [UsedImplicitly]

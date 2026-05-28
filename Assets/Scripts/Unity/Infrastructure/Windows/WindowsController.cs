@@ -4,6 +4,7 @@ using System.Linq;
 using Core.Application.Interfaces.Windows;
 using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.ResourceManager;
+using Unity.Presentation.Components;
 using Unity.Presentation.Windows;
 using UnityEngine;
 using Zenject;

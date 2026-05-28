@@ -1,8 +1,8 @@
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
-namespace Unity.Infrastructure.VisualTutorial.Units.Scene
+namespace Unity.Infrastructure.Tutorial.Units.Scene
 {
     [UnitCategory("Custom/Scene")]
     [UnitTitle("Check Current Scene")]

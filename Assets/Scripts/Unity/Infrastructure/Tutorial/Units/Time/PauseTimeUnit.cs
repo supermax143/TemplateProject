@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 
-namespace Unity.Infrastructure.VisualTutorial.Units.Time
+namespace Unity.Infrastructure.Tutorial.Units.Time
 {
     [UnitCategory("Custom/Time")]
     [UnitTitle("PauseTime")]

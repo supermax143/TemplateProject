@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using Unity.Infrastructure.VisualTutorial.Units.BaseUnits;
+using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 
-namespace Unity.Infrastructure.VisualTutorial.Units
+namespace Unity.Infrastructure.Tutorial.Units
 {
     [UsedImplicitly]
     [UnitCategory("Custom")]

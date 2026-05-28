@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
+using Core.Application.Localization;
 using Core.Domain.Services;
 using Zenject;
 
@@ -9,7 +10,7 @@ namespace Unity.Bootstrap.GameInitializer
 {
    internal class GameBootrstarp : IBootstrapProgress, IGameBootstrap
    {
-      [Inject] private ILocalization _localization;
+      [Inject] private LocalizationController _localization;
     
       public event Action OnStepStarted;
       public event Action OnInitializationComplete;
@@ -25,7 +26,6 @@ namespace Unity.Bootstrap.GameInitializer
       public async Task Initialize()
       {
          AddSteps();
-
          
          for (int i = 0; i < _steps.Count; i++)
          {

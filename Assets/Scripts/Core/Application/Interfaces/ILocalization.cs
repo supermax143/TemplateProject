@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Core.Application.Interfaces
 {
-   public interface ILocalization: IBootstrapStep
+   public interface ILocalization
    {
       event Action<string> LanguageChanged;
       string Get(string key);

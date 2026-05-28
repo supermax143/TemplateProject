@@ -27,6 +27,7 @@ namespace Unity.Bootstrap.Installers
       {
          InitializeAddressables();
 
+         Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
          Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();

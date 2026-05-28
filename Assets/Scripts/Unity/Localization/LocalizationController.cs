@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Core.Application.Localization
 {
-    internal class LocalizationController : ILocalization
+    internal class LocalizationController : ILocalization, IBootstrapStep
     {
 
         [Inject] private IResourceManager _resourceManager;
@@ -20,6 +20,7 @@ namespace Core.Application.Localization
         
         private readonly Dictionary<string, string> _currentLanguageTable = new();
 
+        private string _defaultLanguageCode;
 
         public string CurrentLanguageCode { get; private set; }
         
@@ -29,12 +30,19 @@ namespace Core.Application.Localization
 
         private List<string> _languageCodes;
         private Dictionary<string, Dictionary<string, string>> _allLanguages;
+        
         public async Task Initialize()
         {
             var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
             Initialize(localizationText?.text);
+            Debug.Log($"{this.GetType().Name} Initialized");
         }
 
+        public void SetDefaultLanguageCode(string languageCode)
+        {
+            _defaultLanguageCode = languageCode;
+        }
+        
         public bool TryGetLanguageCodes(out IEnumerable<string> codes)
         {
             codes = _languageCodes;
@@ -57,7 +65,10 @@ namespace Core.Application.Localization
             _allLanguages = data.AllLanguages;
             
             Initialized =  true;
-            SetLanguage(_languageCodes.First());
+            var code = string.IsNullOrEmpty(_defaultLanguageCode) ? 
+                _languageCodes.First() :
+                _defaultLanguageCode;
+            SetLanguage(code);
         }
 
        
@@ -92,7 +103,7 @@ namespace Core.Application.Localization
             }
 
             CurrentLanguageCode = languageCode;
-
+            
             LanguageChanged?.Invoke(languageCode);
         }
 

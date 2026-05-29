@@ -57,6 +57,7 @@ namespace Unity.Infrastructure.Windows
                 _background.Hide();
                 OnLastWindowClosed?.Invoke();
             }
+            UpdateBackgroundIndex();
             
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
@@ -93,7 +94,7 @@ namespace Unity.Infrastructure.Windows
                     return null;
                 }
                 
-                _background.Show();
+                
                 return InitializeInstance(windowPrefab, windowName);
             }
             catch (Exception ex)
@@ -114,16 +115,28 @@ namespace Unity.Infrastructure.Windows
             var windowsListMember = window.GameObject.AddComponent<WindowsListMember>();
             windowsListMember.Initialize(this, windowName);
 
+            _background.Show();
+            
             _loadingWindows.Remove(windowsListMember.WindowName);
 
             ShowWindowInternal(windowsListMember);
 
             _windowsList.Add(windowsListMember);
+            UpdateBackgroundIndex();
 
 
             OnWindowLoadComplete?.Invoke();
 
             return window;
+        }
+
+        private void UpdateBackgroundIndex()
+        {
+            if (_windowsList.Count == 0)
+            {
+                return;
+            }
+            _background.transform.SetSiblingIndex(_windowsList.Count - 1);
         }
 
         private void ShowWindowInternal(WindowsListMember member)
